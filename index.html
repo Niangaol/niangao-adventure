@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#253e43"><meta name="description" content="李念（年糕）的像素冒险。杭电 2026 级智能科学与技术，写代码、玩游戏，也带着相机看世界。">
+<title>李念 · 年糕的像素冒险</title>
+<link rel="preload" href="assets/fonts/fusion-pixel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#viewport">跳到介绍内容</a>
+<div class="console">
+  <header class="topbar">
+    <a class="brand" href="#start" data-go="0"><span class="brand-mark" aria-hidden="true">N</span><span>年糕的个人存档<small>Li Nian · Adventure edition</small></span></a>
+    <div class="system-actions"><button id="motionToggle" aria-pressed="true" title="关闭或开启动画">动画：开</button><button id="soundToggle" aria-pressed="false">声音：关</button><button id="mapOpen" class="solid">关卡地图 <span aria-hidden="true">▤</span></button></div>
+  </header>
+  <nav class="level-nav" aria-label="章节"><div id="navTrack"></div><span class="slot-label">存档 / 2026</span></nav>
+  <main id="viewport" tabindex="-1">
+    <!-- Hook: real protagonist and a directed, playable pixel landscape. -->
+    <section class="scene active" id="start" aria-labelledby="heroTitle">
+      <div class="hero-world"><canvas id="worldCanvas" width="480" height="240" aria-hidden="true"></canvas><div class="pixel-screen" aria-hidden="true"></div>
+        <div class="hero-copy"><p class="location-tag"><span class="square-dot"></span> 玩家已上线 / 杭州</p><h1 id="heroTitle">李念<span class="nick" id="nickEgg">朋友叫我「年糕」</span></h1><p class="hero-line">写代码，玩游戏。<br>也带着相机，看世界。</p><div class="hero-cta"><button class="primary" data-go="1">开始探索 <span aria-hidden="true">▶</span></button><button id="heroFilm" class="cream">播放冒险序章 <small>18 秒</small></button></div></div>
+        <button class="hero-photo" id="heroPhotoOpen"><img id="heroPhoto" alt="李念的摄影作品" width="160" height="106"><span>来自我的摄影相册 <span aria-hidden="true">↗</span></span></button>
+        <div class="world-label">好奇心小岛<small>代码工坊 / 摄影小径 / 游戏补给站</small></div>
+      </div>
+      <div class="hero-bottom"><div><span class="mini-title">当前角色</span><strong>杭电 2026 级 · 智能科学与技术</strong></div><p>不是完成品，是一个还在学习、<br>还在长的玩家。</p><button class="text-button" data-go="5">去摄影小径 <span aria-hidden="true">↗</span></button></div>
+      <div class="story-box" id="heroStory" role="status"><span class="story-avatar" aria-hidden="true"></span><div><b>年糕</b><p id="heroDialogue">欢迎来到我的小岛。选一个关卡，或者一起看完这段冒险。</p></div><button class="story-stop" data-stop="hero" hidden>停止</button></div>
+    </section>
+    <!-- Build: identity is a character sheet, not fictitious RPG ability scores. -->
+    <section class="scene" id="profile" aria-labelledby="profileTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">角色档案 / 不是满级玩家</p><h2 id="profileTitle">一个还在学东西的人。</h2></div><span class="chapter-stamp">01 / 档案</span></div>
+      <div class="profile-layout"><div class="character-sheet pixel-panel"><div class="portrait-scene"><canvas id="portraitCanvas" width="120" height="100" aria-label="原创像素冒险者插画"></canvas></div><h3>李念 / NIANGAO</h3><dl><div><dt>学校</dt><dd>杭州电子科技大学</dd></div><div><dt>专业</dt><dd>智能科学与技术</dd></div><div><dt>入学</dt><dd>2026 级</dd></div><div><dt>方向</dt><dd>AI Agent / 全栈实践</dd></div></dl><div class="inventory-mini"><span>代码</span><span>相机</span><span>卡带</span></div></div>
+      <div class="profile-text"><article class="intro-block"><span class="item-code">技能来源</span><h3>三年 Python，攒出来的底子。</h3><p>高中选考「技术」一路学下来，语法、调试直觉和工程习惯慢慢积累起来。不吹天赋，只讲积累。</p></article><article class="intro-block"><span class="item-code">探索记录</span><h3>AI 相关的，喜欢亲手摸一遍。</h3><p>自部署 Open WebUI，试 MCP 协议，在 Termux 里跑 Node.js。pi / codex / hermes / opencode 都折腾过。懂得不深的，正在一样一样补。</p></article><article class="intro-block"><span class="item-code">玩家守则</span><h3>AI 帮忙，我兜底。</h3><p>项目大多有 AI 帮忙，但想法、决定和收尾是自己的。说出口的事，要做完；LLM 跑偏的时候，程序得拦得住。</p></article></div></div>
+      <div class="next-level"><span>装备齐了，就去看看做过的东西。</span><button data-go="2">前往项目工坊 →</button></div>
+    </section>
+    <section class="scene" id="work" aria-labelledby="workTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">项目工坊 / 从想法到能运行</p><h2 id="workTitle">不是只会提问。<br>也想把东西做出来。</h2></div><span class="chapter-stamp">02 / 工坊</span></div>
+      <div class="work-layout"><div class="work-menu"><button class="project-select selected" data-project="trace" aria-pressed="true"><span class="cart-icon" aria-hidden="true">01</span><span><b>VibeTrace</b><small>让时间有迹可循</small></span><span>▶</span></button><button class="project-select" data-project="agents" aria-pressed="false"><span class="cart-icon" aria-hidden="true">02</span><span><b>多 Agent 流水线</b><small>AI 分工，程序兜底</small></span><span>▶</span></button><p class="side-note">接触过 Electron、TypeScript、Node.js。<br>更在意的是：项目从开始到收尾，能不能自己跟下来。</p></div>
+      <article class="project-stage pixel-panel"><div class="project-header"><span id="projectType">Windows / 本地优先</span><span class="square-dot"></span></div><h3 id="projectName">VibeTrace</h3><p id="projectDescription"></p><div id="projectVisual" class="project-visual"></div><div class="project-foot"><button id="projectPlay" class="primary">播放记录流程 <small>12 秒</small></button><a id="projectLink" href="https://github.com/Niangaol/VibeTrace" target="_blank" rel="noopener">打开 GitHub ↗</a></div><p class="demo-disclaimer">流程与界面为原理示意，不是实时数据或项目截图。</p><div class="sequence-caption" id="projectCaption" role="status">选择项目，看看它在解决什么问题。</div></article></div>
+      <div class="next-level"><span>还有一个项目，来自我最喜欢的游戏。</span><button data-go="3">前往宝可梦研究所 →</button></div>
+    </section>
+    <section class="scene" id="pokemon" aria-labelledby="pokemonTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">宝可梦研究所 / 爱好变成练习</p><h2 id="pokemonTitle">把喜欢的东西，<br>写成自己的工具。</h2></div><span class="chapter-stamp">03 / 研究所</span></div>
+      <div class="lab-layout"><div class="lab-copy"><h3>PokemonData</h3><p>一个给自己用的宝可梦工具站：图鉴、伤害计算、速度线，再接上能对话查数据的 Agent。</p><div class="tech-line"><span>.NET 8</span><span>Vue 3</span><span>Agent · 11 个工具</span></div><p>想配队、想算伤害的时候，也想试着理解：一套前后端系统，是怎么真的接在一起的。</p><div class="lab-controls" role="group" aria-label="选择工具说明"><button class="selected" data-tool="dex" aria-pressed="true">图鉴</button><button data-tool="damage" aria-pressed="false">伤害</button><button data-tool="speed" aria-pressed="false">速度线</button></div></div><div class="lab-screen pixel-panel"><div class="lab-monitor"><div class="pixel-ball" aria-hidden="true"><i></i></div><div><p id="toolCode">图鉴模块</p><h3 id="toolTitle">从一句问题，到一条数据。</h3><p id="toolBody">让 Agent 选择合适的工具，查询图鉴信息，再给出可读的回答。</p></div></div><div class="tool-flow"><span>你的问题</span><i>→</i><span>工具调用</span><i>→</i><span>查询结果</span></div><p class="demo-disclaimer">这里展示功能结构，不运行实际宝可梦伤害计算。</p><button id="labPlay" class="primary">播放工具调用 <small>10 秒</small></button><div id="labCaption" class="sequence-caption" role="status">先理解工具，再理解 Agent。</div></div></div>
+      <div class="next-level"><span>离开研究所，回到玩家自己的卡带架。</span><button data-go="4">打开游戏背包 →</button></div>
+    </section>
+    <section class="scene" id="games" aria-labelledby="gamesTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">游戏补给站 / 我的快乐来源</p><h2 id="gamesTitle">任天堂，是我的快乐补给。</h2></div><span class="chapter-stamp">04 / 背包</span></div>
+      <div class="game-layout"><div><p class="large-copy">喜欢探索世界，也喜欢一局对战。<br>一张很个人的喜好表，<br>比“什么类型都玩”更诚实。</p><div class="favorite-list"><article><span>探索</span><h3>塞尔达传说</h3><p>《旷野之息》与《王国之泪》</p></article><article><span>动作与派对</span><h3>马里奥 / 任天堂明星大乱斗</h3><p>从《奥德赛》到朋友之间的一局对战</p></article><article><span>掌机记忆</span><h3>GBA</h3><p>这次网页的像素界面，也借了一点那种感觉。</p></article></div><p class="side-note">游戏与主机偏好依据你提供的个人排序表。<br>这是偏好记录，不是客观游戏评分。</p></div><figure class="tier-figure pixel-panel"><button id="gameChartOpen" class="image-button" aria-label="放大个人游戏喜好表"><img src="assets/game-tiers.png" alt="李念的任天堂游戏与主机个人喜好排序表" width="1140" height="551" loading="lazy"></button><figcaption>我的游戏生涯个人喜好表 <button class="text-button" id="gameChartZoom">放大查看 ↗</button></figcaption></figure></div>
+      <div class="next-level"><span>有时不带卡带，带的是相机。</span><button data-go="5">进入摄影小径 →</button></div>
+    </section>
+    <!-- Climax: the user's real landscape photographs, never pixelated. -->
+    <section class="scene" id="photography" aria-labelledby="photoTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">摄影小径 / 换一双眼睛看世界</p><h2 id="photoTitle">不在屏幕里时，<br>我也喜欢把世界装进镜头。</h2></div><span class="chapter-stamp">05 / 摄影</span></div>
+      <div class="photo-layout"><div class="photo-viewer pixel-panel"><button class="photo-main image-button" id="photoOpen" aria-label="放大当前摄影作品"><img id="mainPhoto" alt="摄影作品" width="1600" height="1067"><span class="viewfinder" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="shutter" aria-hidden="true"></span><span class="photo-error" hidden>这张照片暂时没加载出来，请切换或重试。</span></button><div class="photo-meta"><div><h3 id="photoName">加载相册</h3><p id="photoSeries"></p></div><span id="photoCount">01 / 10</span></div></div><div class="photo-story"><h3>摄影是另一种探索。</h3><p>水面、树林、城市和夜色。写代码时想把事情弄明白，拍照时想把眼前这一刻留下来。</p><button id="photoFilm" class="primary">播放风光短片 <small>30 秒</small></button><div class="film-progress"><i id="photoProgress"></i></div><p class="sequence-caption" id="photoCaption" role="status">精选我的真实摄影作品。点照片可放大，点下方缩略图可自由切换。</p><div class="photo-arrows"><button id="photoPrev" aria-label="上一张照片">← 上一张</button><button id="photoNext" aria-label="下一张照片">下一张 →</button></div><p class="side-note">像素的是界面，不是照片。<br>保留原作色彩与构图，发布的是去除 EXIF 的展示副本。</p></div></div>
+      <div id="photoThumbnails" class="photo-thumbnails" role="group" aria-label="摄影作品选择"></div>
+      <div class="next-level"><span>镜头之外，学习的任务还在继续。</span><button data-go="6">查看成长任务 →</button></div>
+    </section>
+    <section class="scene" id="growth" aria-labelledby="growthTitle" hidden>
+      <div class="section-heading"><div><p class="location-tag">成长训练场 / 还没有通关</p><h2 id="growthTitle">会用 AI 之后，<br>想离开 AI 也能懂。</h2></div><span class="chapter-stamp">06 / 任务</span></div>
+      <div class="growth-layout"><div class="quest-log pixel-panel"><h3>正在做的任务</h3><article><span class="quest-check" aria-hidden="true">□</span><div><h4>算法与 C++</h4><p>力扣为主，洛谷为辅。先自己想 20 分钟，再看题解，关掉之后重新写。</p></div></article><article><span class="quest-check" aria-hidden="true">□</span><div><h4>线性代数</h4><p>抓概念与几何意义，试着用 numpy 帮自己理解，而不只是记步骤。</p></div></article><article><span class="quest-check" aria-hidden="true">□</span><div><h4>从实践，往原理走</h4><p>能把东西做出来之后，还想解释清楚为什么它能工作。</p></div></article><p class="side-note">这里是学习方向，不是已达成成绩。</p></div><div class="growth-notes"><div class="journey-line"><article><i></i><span>起点</span><h3>高中选考「技术」</h3><p>三年 Python，从第一行 print 开始。</p></article><article><i></i><span>动手</span><h3>第一个开源项目</h3><p>UsageMonitor，后来继续迭代成 VibeTrace。</p></article><article><i></i><span>探索</span><h3>Agent 与全栈</h3><p>把“会用 AI”一点点往“懂原理”推。</p></article><article><i></i><span>现在</span><h3>杭电 / 找同频的人</h3><p>一起做点东西，也互相补齐不会的部分。</p></article></div></div></div>
+      <div class="next-level"><span>接下来，想找一起冒险的人。</span><button data-go="7">返回组队营地 →</button></div>
+    </section>
+    <!-- Epilogue: plain contact, unfinished player, optional celebratory easter egg. -->
+    <section class="scene" id="camp" aria-labelledby="campTitle" hidden>
+      <div class="camp-scene"><canvas id="campCanvas" width="480" height="150" aria-hidden="true"></canvas><div class="camp-copy"><p class="location-tag">组队营地 / To be continued</p><h2 id="campTitle">还在学，还在长。<br>下一关，想一起打。</h2><p>想加入 AI Vibe：因为真正在用，也有做过的东西。<br>更想找一群同频的人，把想法继续往前推。</p><div class="contact-actions"><a class="primary" href="mailto:niangaol@qq.com">给年糕发邮件 ↗</a><a class="cream" href="https://github.com/Niangaol" target="_blank" rel="noopener">GitHub / Niangaol ↗</a></div><span class="email-line">niangaol@qq.com</span></div></div><div class="camp-bottom"><p>问题随便问，答不上来的我回去学。</p><button id="eggEntrance" class="cream">发现隐藏玩家 <span aria-hidden="true">✦</span></button><button data-go="0" class="text-button">回到开场 ↑</button></div><footer><span>© 2026 李念 · 个人介绍与摄影作品</span><span>原创像素场景 · Fusion Pixel Font <a href="https://github.com/TakWolf/fusion-pixel-font" target="_blank" rel="noopener">字体来源</a></span><span>隐藏秘技：↑↑↓↓←→←→BA</span></footer>
+    </section>
+  </main>
+  <div class="bottom-hud"><div class="hud-chapter"><span id="levelNumber">00</span><div><b id="levelName">冒险开场</b><small id="levelCount">第 1 / 8 关</small></div></div><div class="hud-route" id="hudRoute" aria-hidden="true"></div><span class="hud-tip">关内滚动阅读 · 边界换关</span><button id="presenterOpen" class="text-button">演讲笔记 <kbd>P</kbd></button><div class="nav-buttons"><button id="prevLevel" aria-label="上一关" disabled>←</button><button id="nextLevel" aria-label="下一关">下一关 →</button></div></div>
+</div>
+<div id="transitionMarker" aria-hidden="true"><span class="tiny-player"></span><span id="transitionName"></span></div>
+<div id="boot" role="dialog" aria-modal="true" aria-labelledby="bootTitle"><div class="boot-top"><span>年糕 / 个人存档</span><button id="skipBoot" class="cream">跳过开场</button></div><div class="boot-stage"><canvas id="bootCanvas" width="320" height="160" aria-hidden="true"></canvas><div class="boot-word"><span>写代码，也看世界。</span><h2 id="bootTitle">年糕的像素冒险</h2></div><div class="boot-dialog"><span class="tiny-player" aria-hidden="true"></span><p id="bootLine">正在读取玩家存档……</p></div></div><div class="boot-bottom"><span id="bootBeat">存档读取</span><div><i id="bootProgress"></i></div><span>开场演出 / 可跳过</span></div></div>
+<dialog id="mapDialog" class="map-dialog" aria-labelledby="mapDialogTitle"><div class="dialog-header"><h2 id="mapDialogTitle">选择下一站</h2><button data-close="mapDialog" aria-label="关闭关卡地图">×</button></div><p>这是我的小岛。代码、游戏、摄影，都有一条自己的路。</p><div id="mapLevels" class="map-levels"></div><small>方向键翻关 / P 演讲笔记 / Esc 关闭弹窗</small></dialog>
+<dialog id="imageDialog" class="image-dialog" aria-labelledby="imageTitle"><div class="dialog-header"><h2 id="imageTitle">摄影作品</h2><button data-close="imageDialog" aria-label="关闭图片">×</button></div><img id="largeImage" alt=""><p id="imageCaption"></p><div class="image-nav"><button id="imagePrev">← 上一张</button><button id="imageNext">下一张 →</button></div></dialog>
+<dialog id="presenterDialog" class="presenter-dialog" aria-labelledby="presenterTitle"><div class="dialog-header"><h2 id="presenterTitle">演讲笔记</h2><button data-close="presenterDialog" aria-label="关闭演讲笔记">×</button></div><div class="presenter-status"><b id="noteChapter">开场</b><span id="talkTimer">15:00</span></div><ul id="talkNotes"></ul><div class="presenter-controls"><button id="notePrev">← 上一段</button><button id="noteNext">下一段 →</button><button id="timerToggle">开始计时</button><button id="timerReset">重置</button></div><p>总计 15 分钟参考节奏 / ←→ 切换笔记 / Esc 关闭</p></dialog>
+<dialog id="eggDialog" class="egg-dialog" aria-labelledby="eggTitle"><canvas id="eggCanvas" width="480" height="320" aria-hidden="true"></canvas><button class="egg-dismiss" data-close="eggDialog" aria-label="关闭彩蛋">×</button><div class="egg-content"><span class="egg-label">隐藏玩家 / 遭遇成功</span><div class="egg-ball"><div class="pixel-ball"><i></i></div><span class="egg-ring r1"></span><span class="egg-ring r2"></span></div><h2 id="eggTitle">年糕出现了！</h2><p id="eggSubtitle">谢谢你探索到最后。</p><button id="captureEgg" class="primary">收服它</button><div class="egg-hint">Esc 可关闭 / 每次探索都有新故事</div></div></dialog>
+<noscript><div class="noscript-message">请开启 JavaScript 来探索关卡。你仍可以通过 niangaol@qq.com 联系李念。</div></noscript>
+<script src="world.js" defer></script><script src="app.js" defer></script>
+</body></html>
