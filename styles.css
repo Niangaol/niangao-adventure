@@ -23,6 +23,49 @@ dialog{font-family:var(--font);font-size:18px;color:var(--ink);border:4px solid 
 @media(max-width:370px){.brand small{display:none}.brand{font-size:14px}.system-actions button{font-size:11px;padding:5px}.hero-copy h1{font-size:54px}.hero-cta{flex-direction:column;align-items:flex-start}.hero-cta button{font-size:15px}.hero-photo{width:130px}.hero-photo img{height:74px}.section-heading h2{font-size:29px}.chapter-stamp{font-size:10px;padding:4px 6px}.work-menu{grid-template-columns:1fr}.work-menu .side-note{grid-column:1}.hud-chapter b{font-size:11px}.bottom-hud #presenterOpen{font-size:10px}.nav-buttons button{font-size:11px;padding:5px}.lab-monitor{gap:12px}.lab-monitor .pixel-ball{width:56px;height:56px}.lab-monitor h3{font-size:20px}.photo-meta h3{font-size:18px}.boot-word h2{font-size:24px}.photo-thumbnails{grid-template-columns:repeat(5,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+/* SafeTrace intel radar: scan, merge, quarantine, enrich, index, answer. */
+.intel-radar{display:grid;grid-template-columns:232px 1fr;gap:22px;align-items:center;padding:18px;border:2px solid var(--ink);background:#edf2e0;box-shadow:inset 0 0 0 1px #c6d4b6}
+.radar-scope{position:relative;width:232px;height:212px;background:#15323b;border:2px solid var(--ink);overflow:hidden;box-shadow:inset 0 0 0 1px #0c222a}
+.radar-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 13px,rgba(140,205,192,.13) 13px 14px),repeating-linear-gradient(90deg,transparent 0 13px,rgba(140,205,192,.13) 13px 14px)}
+.radar-rings{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0 33px,rgba(124,255,214,.2) 33px 34px,transparent 34px 66px,rgba(124,255,214,.2) 66px 67px,transparent 67px 99px,rgba(124,255,214,.2) 99px 100px)}
+.radar-sweep{position:absolute;left:50%;top:6px;width:2px;height:100px;background:#7cffd6;transform-origin:50% 100px;opacity:0;animation:radar-spin 3.6s steps(12,end) infinite}
+.radar-sweep::before,.radar-sweep::after{content:"";position:absolute;left:-2px;width:6px;background:#7cffd6}
+.radar-sweep::before{top:26px;height:56px;opacity:.24}
+.radar-sweep::after{top:52px;height:36px;opacity:.11}
+@keyframes radar-spin{to{transform:rotate(360deg)}}
+.radar-signal{position:absolute;left:var(--x);top:var(--y);width:7px;height:7px;background:#e8af66;border:1px solid #0c222a;opacity:0;transform:scale(.4);transition:left .7s steps(6,end),top .7s steps(6,end),opacity .35s,transform .35s steps(3,end)}
+.radar-signal.radar-noise{background:#b76350}
+.intel-radar[data-stage="0"] .radar-sweep,.intel-radar[data-stage="1"] .radar-sweep{opacity:1}
+.intel-radar[data-stage="0"] .radar-signal{animation:radar-signal-pop .45s steps(3,end) var(--d) forwards}
+@keyframes radar-signal-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.intel-radar[data-stage="1"] .radar-signal:not(.radar-noise),.intel-radar[data-stage="2"] .radar-signal:not(.radar-noise),.intel-radar[data-stage="3"] .radar-signal:not(.radar-noise),.intel-radar[data-stage="4"] .radar-signal:not(.radar-noise){left:50%;top:50%;opacity:0;transform:scale(.5)}
+.intel-radar[data-stage="2"] .radar-signal.radar-noise{opacity:0;top:82%;transform:translateY(8px)}
+.radar-core{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;background:#7cffd6;border:2px solid #0c222a;display:grid;place-items:center;font-size:10px;color:#0c222a;opacity:.35;transform:scale(.6);transition:transform .5s steps(4,end),opacity .35s,left .7s steps(6,end),top .7s steps(6,end)}
+.intel-radar[data-stage="1"] .radar-core,.intel-radar[data-stage="2"] .radar-core,.intel-radar[data-stage="3"] .radar-core{opacity:1;transform:scale(1)}
+.intel-radar[data-stage="4"] .radar-core{opacity:1;transform:scale(.92)}
+.radar-badges{position:absolute;left:calc(50% + 22px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:3px;opacity:0;transition:opacity .4s steps(3,end)}
+.radar-badges span{font-size:10px;background:#e8af66;color:#33240f;border:1px solid #0c222a;padding:1px 5px;white-space:nowrap}
+.intel-radar[data-stage="3"] .radar-badges,.intel-radar[data-stage="4"] .radar-badges{opacity:1}
+.radar-stack{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:row-reverse;gap:3px;opacity:0;transition:opacity .4s}
+.radar-stack i{width:9px;height:16px;background:#4d8067;border:1px solid #0c222a;transform:scaleY(.25);transform-origin:bottom;transition:transform .35s steps(3,end)}
+.intel-radar[data-stage="4"] .radar-stack{opacity:1}
+.intel-radar[data-stage="4"] .radar-stack i{transform:scaleY(1)}
+.intel-radar[data-stage="4"] .radar-core{left:auto;top:auto;right:24px;bottom:14px;margin:0}
+.radar-side{min-width:0}
+.radar-log{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px}
+.radar-log li{opacity:.32;transition:opacity .3s}
+.radar-log li::before{content:"▸ ";color:var(--jade)}
+.intel-radar[data-stage="0"] .radar-log li:nth-child(-n+1),.intel-radar[data-stage="1"] .radar-log li:nth-child(-n+2),.intel-radar[data-stage="2"] .radar-log li:nth-child(-n+3),.intel-radar[data-stage="3"] .radar-log li:nth-child(-n+4),.intel-radar[data-stage="4"] .radar-log li{opacity:1}
+.radar-answer{margin-top:14px;border:2px dashed var(--jade);padding:10px 12px;background:#fff9e9;opacity:0;transform:translateY(6px);transition:opacity .45s steps(4,end),transform .45s steps(4,end)}
+.radar-answer p{margin:0}
+.radar-query{font-size:15px}
+.radar-cite{font-size:12px;color:var(--ink2);margin-top:4px}
+.intel-radar[data-stage="4"] .radar-answer{opacity:1;transform:none}
+@media(max-width:900px){.intel-radar{grid-template-columns:1fr;gap:16px}.radar-scope{width:100%;max-width:260px;height:auto;aspect-ratio:1/1;margin:0 auto}}
+@media(prefers-reduced-motion:reduce){.radar-sweep{animation:none}.intel-radar[data-stage="0"] .radar-signal{animation:none;opacity:1;transform:none}}
+body.low-motion .radar-sweep{animation:none}
+body.low-motion .intel-radar[data-stage="0"] .radar-signal{animation:none;opacity:1;transform:none}
+@media(prefers-color-scheme:dark){.intel-radar{background:#1b2f37;box-shadow:inset 0 0 0 1px #2c454d}.radar-answer{background:#243a42}}
 /* Hand-drawn pixel assets: scene icons, mascot and camp banner. */
 .scene-icon{width:44px;height:44px;object-fit:contain;image-rendering:pixelated;display:block;margin-bottom:10px}
 .hero-mascot{position:absolute;right:28px;bottom:84px;width:112px;height:auto;image-rendering:pixelated;z-index:3;pointer-events:none;animation:mascot-bob 2.6s steps(2,end) infinite}
