@@ -291,6 +291,14 @@
   document.querySelectorAll('.project-visual').forEach(node => node.classList.add('effects-parcel-stage'));
   document.querySelectorAll('.photo-viewer').forEach(node => node.classList.add('effects-photo-frame'));
   document.querySelectorAll('.sequence-caption').forEach(node => node.classList.add('effects-caption'));
+  // Looping light sweep on key text; staggered so headings never flash in unison.
+  // Elements with their own panel background are excluded: background-clip would eat it.
+  const shimmerGroups=['#heroTitle','.hero-line','h2','.project-select b','.lab-copy h3','.large-copy','#levelName'];
+  let shimmerIndex=0;
+  for(const selector of shimmerGroups)document.querySelectorAll(selector).forEach(node=>{
+    node.classList.add('fx-shimmer');
+    node.style.setProperty('--fx-delay',((shimmerIndex++%7)*0.6).toFixed(2)+'s');
+  });
   // Cursor layer: comet trail and click bursts. Fixed above content, never intercepts pointers.
   const cursorCanvas=document.createElement('canvas');
   cursorCanvas.className='cursor-fx';

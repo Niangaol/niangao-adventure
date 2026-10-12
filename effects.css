@@ -48,8 +48,31 @@ body.low-motion .cursor-fx{display:none}
 .agent-thinking{font-size:12px;color:var(--line,#6a8780);min-width:4.5em}
 @media(prefers-reduced-motion:reduce){.agent-orbit i{animation:none;transform:translateY(-6px)}}
 body.low-motion .agent-orbit i{animation:none;transform:translateY(-6px)}
+/* Looping light sweep on key text. Stepped like the pixel UI, resting as solid color. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .fx-shimmer{
+    background-image:linear-gradient(100deg,var(--fx-base,currentColor) 0 42%,var(--fx-glow,#ffd98a) 48%,#ffffff 50%,var(--fx-glow,#ffd98a) 52%,var(--fx-base,currentColor) 58% 100%);
+    background-size:300% 100%;
+    background-position:0% 0;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation-name:fx-shimmer-run;
+    animation-duration:4.2s;
+    animation-timing-function:steps(18,end);
+    animation-iteration-count:infinite;
+    animation-delay:var(--fx-delay,0s);
+  }
+}
+@keyframes fx-shimmer-run{from{background-position:0% 0}to{background-position:100% 0}}
+@media (prefers-reduced-motion:reduce){.fx-shimmer{animation:none;background-position:100% 0}}
+body.low-motion .fx-shimmer{animation:none;background-position:100% 0}
+@media (forced-colors:active){.fx-shimmer{-webkit-text-fill-color:currentColor;background-image:none;animation:none}}
 @media (prefers-color-scheme: dark){
   #viewport.effects-information{background:#182a33}
   #viewport.effects-information>.scene.moving{background:#182a33}
   .effects-loop{box-shadow:2px 2px 0 #0a1418}
+  /* Saturated amber band so the sweep reads clearly on near-white night text. */
+  .fx-shimmer{--fx-glow:#ffb84d}
 }
