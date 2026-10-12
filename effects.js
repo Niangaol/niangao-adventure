@@ -114,7 +114,11 @@
   window.addEventListener('adventure:chapter', event => {
     const index = event.detail?.index;
     if (!Number.isInteger(index)) return;
-    if (index !== targetChapter) { cancelLoops(); targetChapter = index; }
+    if (index !== targetChapter) {
+      cancelLoops(); targetChapter = index;
+      if (fadePhase !== 'out' && fade > 0) { fadePhase = 'out'; fadeStart = performance.now(); }
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
     clearTimeout(entryTimer);
     // Landing's sceneUI event precedes moving=false; defer without using an animation RAF.
     entryTimer = setTimeout(reconcile, 0);
@@ -135,21 +139,23 @@
   viewport.append(canvas);
   const ctx = canvas.getContext('2d');
   let raf = 0, last = 0, width = 0, height = 0, dpr = 1, particles = [], sweeps = [], meteors = [];
-  let frames = 0;
+  let frames = 0, fade = 1, fadePhase = 'idle', fadeStart = 0;
+  const FADE_MS = 420;
   let infoParticles = [], infoBurst = null, infoChapter = 0, infoFrames = 0;
   const infoThemes=['原始开场','档案星屑','数据轨迹','研究所扫描','卡带碎片','取景光点','成长路线','营地萤火'];
   const infoPalettes=[[],['#50877e','#bc874a','#789aa3'],['#4c9691','#bf884b','#62866e'],['#b8754f','#598f7a','#739a9d'],['#ab8151','#5a9c88','#7095a5'],['#5b8a7c','#bd9660','#7898a0'],['#618569','#ab8a55','#65939a'],['#519b86','#c39350','#628b93']];
   function seedInfo(){
-    const count=innerWidth<=740?40:90;
-    infoParticles=Array.from({length:count},(_,i)=>({x:(i*79.71+17)%Math.max(1,width),y:(i*47.39+31)%Math.max(1,height),size:i%7===0?7:i%3===0?4:3,phase:i*.89,speed:8+i%7*2,kind:i%5===0?'cross':i%4===0?'beam':'dust'}));
+    // Slightly lower density; every mote differs in size, opacity and speed so nothing pulses in unison.
+    const count=innerWidth<=740?28:58;
+    infoParticles=Array.from({length:count},(_,i)=>({x:(i*79.71+17)%Math.max(1,width),y:(i*47.39+31)%Math.max(1,height),size:[2,3,4,6][i%4],scale:.7+(i%5)*.22,phase:i*.89,speed:8+i%7*2,alpha:.2+(i%6)*.07,kind:i%5===0?'cross':i%4===0?'beam':'dust'}));
   }
   function drawInfoPage(now,dt,base,scene){
     const chapter=getAdventure().cur,palette=infoPalettes[chapter]||infoPalettes[1];
     infoFrames++;
-    if(infoChapter!==chapter){infoChapter=chapter;const stamp=scene?.querySelector('.chapter-stamp'),r=stamp?.getBoundingClientRect();infoBurst={at:now,x:r?r.left-base.left+r.width*.5:width*.85,y:r?r.top-base.top+r.height*.5:height*.15};}
+    if(infoChapter!==chapter){infoChapter=chapter;const stamp=scene?.querySelector('.chapter-stamp'),r=stamp?.getBoundingClientRect();infoBurst={at:now+160,x:r?r.left-base.left+r.width*.5:width*.85,y:r?r.top-base.top+r.height*.5:height*.15};}
     ctx.save();ctx.imageSmoothingEnabled=false;
     // The full information-page area is available. Foreground text and images are cleared below.
-    infoParticles.forEach((p,i)=>{p.y=(p.y-p.speed*dt+height)%Math.max(1,height);const x=Math.round(p.x+Math.sin(now/1500+p.phase)*13),y=Math.round(p.y),s=p.size;ctx.globalAlpha=.34+.25*(1+Math.sin(now/2200+p.phase))/2;ctx.fillStyle=palette[i%palette.length];
+    infoParticles.forEach((p,i)=>{p.y=(p.y-p.speed*dt+height)%Math.max(1,height);const x=Math.round(p.x+Math.sin(now/1500+p.phase)*13),y=Math.round(p.y),s=Math.max(2,Math.round(p.size*p.scale));ctx.globalAlpha=p.alpha*(.72+.28*(1+Math.sin(now/2200+p.phase))/2);ctx.fillStyle=palette[i%palette.length];
       const kind=chapter===1?'cross':chapter===2?'packet':chapter===3?(i%3===0?'beacon':'dust'):chapter===4?'cartridge':chapter===5?'viewfinder':chapter===6?(i%3===0?'node':'dust'):'firefly';
       if(kind==='packet'){const px=Math.round((p.x+now*.025)%Math.max(1,width));ctx.fillRect(px,y,s+3,s);ctx.globalAlpha*=.4;ctx.fillRect(px-8,y+1,5,2);ctx.fillRect(px-15,y+1,3,2);}
       else if(kind==='cartridge'){ctx.fillRect(x,y,11,2);ctx.fillRect(x,y+14,11,2);ctx.fillRect(x,y,2,15);ctx.fillRect(x+9,y,2,15);ctx.fillRect(x+3,y+4,5,5);ctx.fillRect(x+3,y+12,5,1);}
@@ -182,8 +188,8 @@
     canvas.width = Math.max(1, Math.round(width * dpr)); canvas.height = Math.max(1, Math.round(height * dpr));
     ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (ctx) ctx.imageSmoothingEnabled = false;
-    const count = window.innerWidth <= 740 ? 60 : 150;
-    particles = Array.from({length:count}, (_, i) => ({x:i%3===0 ? Math.random()*width : i%2 ? 3+Math.random()*8 : width-11+Math.random()*8,y:Math.random()*height,phase:Math.random()*Math.PI*2,speed:2+Math.random()*5,size:i%7===0?3:2,kind:i%8===0?'beam':i%6===0?'star':'firefly',color:colors[i%colors.length]}));
+    const count = window.innerWidth <= 740 ? 45 : 110;
+    particles = Array.from({length:count}, (_, i) => ({x:i%3===0 ? Math.random()*width : i%2 ? 3+Math.random()*8 : width-11+Math.random()*8,y:Math.random()*height,phase:Math.random()*Math.PI*2,speed:2+Math.random()*5,size:(i%7===0?3:2)*(.8+(i%4)*.15),alpha:.2+(i%5)*.08,kind:i%8===0?'beam':i%6===0?'star':'firefly',color:colors[i%colors.length]}));
     sweeps = [{x:Math.random()*width, v:width/24}, {x:-width*Math.random()*.4, v:width/31}];
     meteors = [];
     seedInfo();
@@ -192,10 +198,19 @@
     cancelAnimationFrame(raf); raf = 0; last = 0;
     ctx?.clearRect(0, 0, width, height);
     viewport.classList.remove('effects-live');
+    fade = 0; fadePhase = 'idle'; canvas.style.opacity = '0';
   }
   function frame(now) {
     raf = 0;
-    if (!available()) { stopCanvas(); return; }
+    // Transition fade: the canvas eases out during a scene change and eases back in after landing.
+    if (fadePhase === 'out') { fade = Math.max(0, Math.min(1, 1-(now-fadeStart)/FADE_MS)); if (!fade) fadePhase = 'idle'; }
+    else if (fadePhase === 'in') { fade = Math.max(0, Math.min(1, (now-fadeStart)/FADE_MS)); if (fade >= 1) fadePhase = 'idle'; }
+    if (canvas.style.opacity !== String(fade)) canvas.style.opacity = String(fade);
+    if (!available()) {
+      if (fadePhase === 'idle' && fade > 0) { fadePhase = 'out'; fadeStart = now; }
+      if (fade > 0) raf = requestAnimationFrame(frame); else stopCanvas();
+      return;
+    }
     if (now - last >= 1000 / 30) {
       const dt = last ? Math.min(.1, (now-last)/1000) : 0;
       last = now; frames++;
@@ -213,8 +228,8 @@
       particles.forEach(p => {
         p.y = (p.y - p.speed*dt + height) % Math.max(1,height);
         const x = Math.round(p.x + Math.sin(now/2400+p.phase)*5), y = Math.round(p.y);
-        // Very slow breathing, not a strobe.
-        ctx.globalAlpha = .22 + .32*(1+Math.sin(now/2800+p.phase))/2;
+        // Very slow breathing, not a strobe. Each mote keeps its own brightness.
+        ctx.globalAlpha = p.alpha*(.7+.3*(1+Math.sin(now/2800+p.phase))/2);
         ctx.fillStyle = p.color;
         if (p.kind === 'beam') {
           ctx.globalAlpha *= .5;
@@ -251,7 +266,10 @@
   }
   function syncCanvas() {
     viewport.classList.toggle('effects-information',Boolean(getAdventure()&&getAdventure().cur>0));
-    if (!ctx || !available()) { stopCanvas(); return; }
+    if (!ctx) return;
+    if (noMotion() || document.hidden || hasDialog() || !getAdventure() || getAdventure().booting) { stopCanvas(); return; }
+    // Ease back in from transparent instead of appearing at once.
+    if (fade <= 0 && fadePhase !== 'in') { fade = 0; fadePhase = 'in'; fadeStart = performance.now(); canvas.style.opacity = '0'; }
     if (!raf) { viewport.classList.add('effects-live'); raf = requestAnimationFrame(frame); }
   }
   // Local observers only: no mutation observer of chat content or message styling.
@@ -275,7 +293,7 @@
   document.querySelectorAll('.sequence-caption').forEach(node => node.classList.add('effects-caption'));
   window.__adventureEffects = {
     stop: () => { cancelLoops(true); stopCanvas(); },
-    get state() { return {raf:!!raf,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),theme:infoThemes[getAdventure()?.cur||0],backgroundLayer:0,foregroundLayer:1,version:'info-layered-2'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
+    get state() { return {raf:!!raf,fade:Number(fade.toFixed(2)),fadePhase,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),theme:infoThemes[getAdventure()?.cur||0],backgroundLayer:0,foregroundLayer:1,version:'fade-motes-1'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
   };
   resizeCanvas(); reconcile();
 })();
