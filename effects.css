@@ -1,3 +1,9 @@
+/* Layer contract: paper(-1) -> information FX(0) -> scene and all its content(1).
+   Only information pages use this contract. Original first-scene stacking is unchanged. */
+#viewport.effects-information{background:#e6edd8}
+#viewport.effects-information>.effects-canvas{z-index:0}
+#viewport.effects-information>.scene:not(#start){z-index:1;background:transparent}
+#viewport.effects-information>.scene.moving{background:#e6edd8}
 /* Pixel information-page accents; the first-scene backdrop remains untouched. */
 .effects-information.effects-live .scene:not(#start) .chapter-stamp{box-shadow:3px 3px 0 #86af96,7px 7px 0 rgba(189,143,75,.22)}
 .effects-information .scene:not(#start) .project-stage,.effects-information .scene:not(#start) .lab-screen,.effects-information .scene:not(#start) .quest-log,.effects-information .scene:not(#start) .character-sheet{border-color:#365d59}

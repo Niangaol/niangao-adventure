@@ -137,6 +137,7 @@
   let raf = 0, last = 0, width = 0, height = 0, dpr = 1, particles = [], sweeps = [], meteors = [];
   let frames = 0;
   let infoParticles = [], infoBurst = null, infoChapter = 0, infoFrames = 0;
+  const infoThemes=['原始开场','档案星屑','数据轨迹','研究所扫描','卡带碎片','取景光点','成长路线','营地萤火'];
   const infoPalettes=[[],['#50877e','#bc874a','#789aa3'],['#4c9691','#bf884b','#62866e'],['#b8754f','#598f7a','#739a9d'],['#ab8151','#5a9c88','#7095a5'],['#5b8a7c','#bd9660','#7898a0'],['#618569','#ab8a55','#65939a'],['#519b86','#c39350','#628b93']];
   function seedInfo(){
     const count=innerWidth<=740?40:90;
@@ -149,12 +150,22 @@
     ctx.save();ctx.imageSmoothingEnabled=false;
     // The full information-page area is available. Foreground text and images are cleared below.
     infoParticles.forEach((p,i)=>{p.y=(p.y-p.speed*dt+height)%Math.max(1,height);const x=Math.round(p.x+Math.sin(now/1500+p.phase)*13),y=Math.round(p.y),s=p.size;ctx.globalAlpha=.34+.25*(1+Math.sin(now/2200+p.phase))/2;ctx.fillStyle=palette[i%palette.length];
-      if(p.kind==='cross'){ctx.fillRect(x-5,y,12,3);ctx.fillRect(x,y-5,3,12);ctx.globalAlpha*=.35;ctx.fillRect(x-2,y-2,7,7);}
-      else if(p.kind==='beam'){for(let k=0;k<6;k++){ctx.globalAlpha=.42-k*.055;ctx.fillRect(x+k*5,y+k*9,4,7);}}
+      const kind=chapter===1?'cross':chapter===2?'packet':chapter===3?(i%3===0?'beacon':'dust'):chapter===4?'cartridge':chapter===5?'viewfinder':chapter===6?(i%3===0?'node':'dust'):'firefly';
+      if(kind==='packet'){const px=Math.round((p.x+now*.025)%Math.max(1,width));ctx.fillRect(px,y,s+3,s);ctx.globalAlpha*=.4;ctx.fillRect(px-8,y+1,5,2);ctx.fillRect(px-15,y+1,3,2);}
+      else if(kind==='cartridge'){ctx.fillRect(x,y,11,2);ctx.fillRect(x,y+14,11,2);ctx.fillRect(x,y,2,15);ctx.fillRect(x+9,y,2,15);ctx.fillRect(x+3,y+4,5,5);ctx.fillRect(x+3,y+12,5,1);}
+      else if(kind==='viewfinder'){ctx.fillRect(x,y,7,2);ctx.fillRect(x,y,2,7);ctx.fillRect(x+9,y+14,7,2);ctx.fillRect(x+14,y+9,2,7);if(i%3===0)ctx.fillRect(x+7,y+7,2,2);}
+      else if(kind==='node'||kind==='beacon'){ctx.strokeStyle=palette[i%3];ctx.lineWidth=2;ctx.strokeRect(x,y,s+3,s+3);ctx.fillRect(x+3,y+3,2,2);}
+      else if(kind==='firefly'){ctx.fillRect(x,y,3,3);ctx.globalAlpha*=.25;ctx.fillRect(x-2,y-2,7,7);ctx.fillRect(x+1,y+8,1,5);}
+      else if(kind==='cross'){ctx.fillRect(x-5,y,12,3);ctx.fillRect(x,y-5,3,12);ctx.globalAlpha*=.35;ctx.fillRect(x-2,y-2,7,7);}
+      else if(kind==='beam'){for(let k=0;k<6;k++){ctx.globalAlpha=.42-k*.055;ctx.fillRect(x+k*5,y+k*9,4,7);}}
       else{ctx.fillRect(x,y,s,s);ctx.globalAlpha*=.3;ctx.fillRect(x+3,y+7,s-1,3);ctx.fillRect(x+5,y+14,2,2);}
     });
     // Stepped scanning rays: no blur, smooth ribbon, gradients or background recoloring.
-    for(let ray=0;ray<3;ray++){const sx=(now*.016+ray*width*.34)%(width+160)-80;ctx.fillStyle=palette[ray%3];for(let k=0;k<Math.ceil(height/22);k++){ctx.globalAlpha=.12+(k%4===0?.08:0);ctx.fillRect(Math.round(sx+k*7),k*22,5,18);ctx.globalAlpha=.07;ctx.fillRect(Math.round(sx+k*7+6),k*22,10,3);}}
+    if(chapter===2){for(let row=0;row<4;row++){const y=Math.round((height*(.2+row*.22))/8)*8,x=Math.round((now*.035+row*150)%Math.max(1,width));ctx.globalAlpha=.14;ctx.fillStyle=palette[row%3];for(let k=0;k<width;k+=16)ctx.fillRect(k,y,9,1);ctx.globalAlpha=.4;ctx.fillRect(x,y-3,9,7);}}
+    else if(chapter===3){const x=width*.78,y=height*.32,size=Math.min(145,width*.24);ctx.strokeStyle=palette[0];ctx.lineWidth=1;ctx.globalAlpha=.17;for(let k=1;k<=4;k++)ctx.strokeRect(x-size*k/4,y-size*k/4,size*k/2,size*k/2);const angle=Math.floor(now/500)%8*Math.PI/4;ctx.fillStyle=palette[1];for(let k=0;k<size;k+=8){ctx.globalAlpha=.35*(1-k/size);ctx.fillRect(Math.round(x+Math.cos(angle)*k),Math.round(y+Math.sin(angle)*k),3,3);}}
+    else if(chapter===6){ctx.strokeStyle=palette[0];ctx.lineWidth=2;ctx.globalAlpha=.18;ctx.beginPath();ctx.moveTo(width*.08,height*.75);ctx.lineTo(width*.25,height*.75);ctx.lineTo(width*.25,height*.54);ctx.lineTo(width*.53,height*.54);ctx.lineTo(width*.53,height*.26);ctx.lineTo(width*.91,height*.26);ctx.stroke();for(const [x,y]of [[.08,.75],[.25,.54],[.53,.26],[.91,.26]]){ctx.globalAlpha=.4;ctx.fillStyle=palette[1];ctx.fillRect(width*x-5,height*y-5,10,10);}}
+    else if(chapter===5){ctx.globalAlpha=.14;ctx.fillStyle=palette[1];const x=Math.round((now*.009)%(width+80))-40;for(let k=0;k<height;k+=26){ctx.fillRect(x,k,2,11);}}
+    else if(chapter===4){ctx.globalAlpha=.13;ctx.fillStyle=palette[1];for(let x=0;x<width;x+=90)ctx.fillRect(x,(now*.012+x)%Math.max(1,height),12,3);}
     // Pixel packets orbit card outlines, not the original first-scene landscape.
     const panels=scene?.querySelectorAll('.pixel-panel,.intro-block,.favorite-list article')||[];
     panels.forEach((node,n)=>{const r=node.getBoundingClientRect();if(!r.width||r.bottom<base.top||r.top>base.bottom)return;const l=r.left-base.left-5,t=r.top-base.top-5,w=r.width+10,h=r.height+10,total=2*(w+h);for(let j=0;j<3;j++){const q=(now*.045+n*80+j*total/3)%total;let x,y;if(q<w){x=l+q;y=t;}else if(q<w+h){x=l+w;y=t+q-w;}else if(q<2*w+h){x=l+2*w+h-q;y=t+h;}else{x=l;y=t+total-q;}ctx.globalAlpha=.75;ctx.fillStyle=palette[(n+j)%3];ctx.fillRect(Math.round(x/2)*2,Math.round(y/2)*2,6,6);ctx.globalAlpha=.3;ctx.fillRect(Math.round(x/2)*2-5,Math.round(y/2)*2,3,3);}});
@@ -264,7 +275,7 @@
   document.querySelectorAll('.sequence-caption').forEach(node => node.classList.add('effects-caption'));
   window.__adventureEffects = {
     stop: () => { cancelLoops(true); stopCanvas(); },
-    get state() { return {raf:!!raf,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),version:'info-pixel-1'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
+    get state() { return {raf:!!raf,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),theme:infoThemes[getAdventure()?.cur||0],backgroundLayer:0,foregroundLayer:1,version:'info-layered-2'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
   };
   resizeCanvas(); reconcile();
 })();
