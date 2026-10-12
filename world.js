@@ -12,6 +12,9 @@ window.PixelWorld = (() => {
   function player(x,y,t=0,walking=false,camera=false){const f=walking?Math.floor(t*5)%2:0;x=Math.round(x);y=Math.round(y);r(x-5,y+22,13,3,'#728c65');r(x-2,y,8,3,'#5c483a');r(x-4,y+3,12,4,'#5c483a');r(x-2,y+7,9,7,C.skin);r(x+5,y+8,2,2,C.ink);r(x-2,y+14,9,7,C.shirt);r(x-4,y+15,2,5,C.skin);r(x+7,y+15,2,4,C.skin);r(x-1,y+21,3,3+(f?1:0),C.ink);r(x+4,y+21,3,3+(f?0:1),C.ink);r(x-1,y+14,3,3,'#9ab590');if(camera){r(x+5,y+12,7,5,C.ink);r(x+7,y+11,3,2,C.ink);r(x+8,y+13,2,2,C.cream);}}
   function flowers(t,dusk=false){for(let i=0;i<48;i++){const x=(i*37+11)%480,y=200+(i*13)%34;const col=dusk?'#c6ae72':i%4===0?'#b87964':i%3===0?'#fff4d7':'#c5d896';r(x,y,2,3,col);r(x-1,y+3,4,1,C.grassDark);if(i%8===0)r(x+2,y-3+Math.floor(Math.sin(t+i)*1),1,1,C.gold);}}
   function atmosphere(t,dusk){
+    // Stepped sun shafts falling from the sun, GBA-style light columns.
+    const sunX=dusk?391:424;
+    for(let i=0;i<6;i++){ctx.globalAlpha=.05+.035*(1+Math.sin(t*.6+i*1.1))/2;for(let s=0;s<10;s++)r(sunX-8+i*6+s*4,38+s*13,4,13,'#fff8dc');}ctx.globalAlpha=1;
     // Layered rectangular bloom and ripples stay inside the original pixel landscape.
     const breath=.5+.5*Math.sin(t*.45);
     for(const [x,y,color] of [[343,178,'#e8af66'],[418,182,'#dce9b2']]){ctx.globalAlpha=.04+breath*.05;r(x-28,y-23,56,46,color);ctx.globalAlpha=.08+breath*.05;r(x-19,y-16,38,32,color);ctx.globalAlpha=.16+breath*.08;r(x-8,y-6,16,12,color);}ctx.globalAlpha=1;

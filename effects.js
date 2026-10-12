@@ -134,7 +134,7 @@
   canvas.setAttribute('aria-hidden', 'true');
   viewport.append(canvas);
   const ctx = canvas.getContext('2d');
-  let raf = 0, last = 0, width = 0, height = 0, dpr = 1, particles = [];
+  let raf = 0, last = 0, width = 0, height = 0, dpr = 1, particles = [], sweeps = [], meteors = [];
   let frames = 0;
   const colors = ['#fff4d7','#e8af66','#bfd398','#75afb5'];
   function resizeCanvas() {
@@ -144,8 +144,10 @@
     canvas.width = Math.max(1, Math.round(width * dpr)); canvas.height = Math.max(1, Math.round(height * dpr));
     ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (ctx) ctx.imageSmoothingEnabled = false;
-    const count = window.innerWidth <= 740 ? 30 : 70;
-    particles = Array.from({length:count}, (_, i) => ({x:i%3===0 ? Math.random()*width : i%2 ? 3+Math.random()*8 : width-11+Math.random()*8,y:Math.random()*height,phase:Math.random()*Math.PI*2,speed:2+Math.random()*5,size:i%7===0?3:2,kind:i%17===0?'beam':i%9===0?'star':'firefly',color:colors[i%colors.length]}));
+    const count = window.innerWidth <= 740 ? 60 : 150;
+    particles = Array.from({length:count}, (_, i) => ({x:i%3===0 ? Math.random()*width : i%2 ? 3+Math.random()*8 : width-11+Math.random()*8,y:Math.random()*height,phase:Math.random()*Math.PI*2,speed:2+Math.random()*5,size:i%7===0?3:2,kind:i%8===0?'beam':i%6===0?'star':'firefly',color:colors[i%colors.length]}));
+    sweeps = [{x:Math.random()*width, v:width/24}, {x:-width*Math.random()*.4, v:width/31}];
+    meteors = [];
   }
   function stopCanvas() {
     cancelAnimationFrame(raf); raf = 0; last = 0;
@@ -170,12 +172,31 @@
       particles.forEach(p => {
         p.y = (p.y - p.speed*dt + height) % Math.max(1,height);
         const x = Math.round(p.x + Math.sin(now/2400+p.phase)*5), y = Math.round(p.y);
-        // Very slow breathing, not a strobe. Sparse beam remains inside the same clip.
-        ctx.globalAlpha = .16 + .28*(1+Math.sin(now/2800+p.phase))/2;
+        // Very slow breathing, not a strobe.
+        ctx.globalAlpha = .22 + .32*(1+Math.sin(now/2800+p.phase))/2;
         ctx.fillStyle = p.color;
-        if (p.kind === 'beam') { ctx.globalAlpha *= .45; ctx.fillRect(x,y,2,32); ctx.fillRect(x-2,y+8,6,12); }
-        else { ctx.fillRect(x,y,p.size,p.size); if(p.kind==='star'){ctx.fillRect(x-2,y+1,6,1);ctx.fillRect(x+1,y-2,1,6);} }
+        if (p.kind === 'beam') {
+          ctx.globalAlpha *= .5;
+          for (let step = 0; step < 5; step++) ctx.fillRect(x + step*3, y + step*8, 2, 10);
+          ctx.fillRect(x - 2, y + 12, 6, 12);
+        }
+        else { ctx.fillRect(x,y,p.size,p.size); if(p.kind==='star'){ctx.fillRect(x-2,y+1,6,1);ctx.fillRect(x+1,y-2,1,6);ctx.fillRect(x-1,y-1,3,3);} }
       });
+      // Slow diagonal light sweeps; the content mask clears them over text or photos.
+      sweeps.forEach(s => {
+        s.x += s.v*dt;
+        if (s.x > width*1.25) s.x = -width*.4;
+        for (let band = 0; band < 5; band++) { ctx.globalAlpha = .055 - band*.008; ctx.fillRect(Math.round(s.x + band*9), 0, 7, height); }
+      });
+      // Occasional pixel meteor across the top band.
+      if (meteors.length < 2 && Math.random() < .01) meteors.push({x:Math.random()*width*.6, y:8+Math.random()*height*.22, vx:3+Math.random()*2.4, vy:1.1+Math.random()*.9, life:1});
+      for (let i = meteors.length-1; i >= 0; i--) {
+        const m = meteors[i]; m.x += m.vx; m.y += m.vy; m.life -= .018;
+        if (m.life <= 0 || m.x > width + 40) { meteors.splice(i,1); continue; }
+        ctx.fillStyle = '#fff4d7';
+        for (let tail = 0; tail < 7; tail++) { ctx.globalAlpha = m.life*.85*(1-tail*.14); ctx.fillRect(Math.round(m.x - tail*4), Math.round(m.y - tail*1.5), 2, 2); }
+      }
+      ctx.globalAlpha = 1;
       ctx.restore();
       // Hard safety mask. Padding includes image shadows, rotated hero frame and nearby text.
       const protectedNodes = scene?.querySelectorAll('img,p,h1,h2,h3,h4,button,a,dl,li,figcaption,.pixel-panel,.hero-copy,.world-label,.camp-copy,.agent-layout,.agent-terminal,.story-box,.photo-viewer,.photo-thumbnails') || [];
