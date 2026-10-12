@@ -126,7 +126,14 @@
   document.addEventListener('click', event => {
     if (internalClick || !(event.target instanceof Element)) return;
     if (event.target.closest('.effects-loop')) return;
-    const cancel = event.target.closest('[data-project],[data-tool],[data-stop],#photoThumbnails button,#photoPrev,#photoNext,#imagePrev,#imageNext');
+    if (event.target.closest('[data-project]')) {
+      // Switching projects keeps the loop alive: the new demo starts immediately.
+      const projectLoop = loops.find(item => item.chapter === targetChapter);
+      if (projectLoop && !projectLoop.enabled) { projectLoop.enabled = true; projectLoop.visited = true; paintButton(projectLoop); }
+      scheduleLoop();
+      return;
+    }
+    const cancel = event.target.closest('[data-tool],[data-stop],#photoThumbnails button,#photoPrev,#photoNext,#imagePrev,#imageNext');
     if (cancel) { cancelLoops(); return; }
     // User Play/Pause is retained verbatim; a pause never receives an automatic click.
     const play = loops.find(loop => event.target.closest('#' + loop.id));

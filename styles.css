@@ -57,7 +57,7 @@ body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:n
 .intel-radar[data-stage="4"] .radar-core{left:auto;top:auto;right:24px;bottom:14px;margin:0}
 .radar-side{min-width:0}
 .radar-log{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px}
-.radar-log li{opacity:.32;transition:opacity .3s}
+.radar-log li{opacity:.58;transition:opacity .3s}
 .radar-log li::before{content:"▸ ";color:var(--jade)}
 .intel-radar[data-stage="0"] .radar-log li:nth-child(-n+1),.intel-radar[data-stage="1"] .radar-log li:nth-child(-n+2),.intel-radar[data-stage="2"] .radar-log li:nth-child(-n+3),.intel-radar[data-stage="3"] .radar-log li:nth-child(-n+4),.intel-radar[data-stage="4"] .radar-log li{opacity:1}
 .radar-answer{margin-top:14px;border:2px dashed var(--jade);padding:10px 12px;background:#fff9e9;opacity:0;transform:translateY(6px);transition:opacity .45s steps(4,end),transform .45s steps(4,end)}
