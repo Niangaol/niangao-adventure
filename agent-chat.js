@@ -70,8 +70,19 @@
       indicator.setAttribute('aria-hidden', 'true');
       const dots = element('span', 'agent-dots');
       for (let i = 0; i < 3; i++) dots.append(element('i'));
-      indicator.append(dots, element('span', '', '生成中'));
+      // Stepped pixel orbit around the dots, plus a phrase that cycles while the model works.
+      const orbit = element('span', 'agent-orbit');
+      orbit.append(element('i'), element('i'));
+      const label = element('span', 'agent-thinking', '正在思考');
+      indicator.append(orbit, dots, label);
       reply.body.append(indicator);
+      const phrases = ['正在思考', '翻一下记忆', '组织语言', '马上就好'];
+      let step = 0;
+      const phraseTimer = setInterval(() => {
+        if (!indicator.isConnected) { clearInterval(phraseTimer); return; }
+        step = (step + 1) % phrases.length;
+        label.textContent = phrases[step];
+      }, 1700);
       return indicator;
     }
     function boundedLimit(value, fallback, minimum) {

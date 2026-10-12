@@ -291,9 +291,86 @@
   document.querySelectorAll('.project-visual').forEach(node => node.classList.add('effects-parcel-stage'));
   document.querySelectorAll('.photo-viewer').forEach(node => node.classList.add('effects-photo-frame'));
   document.querySelectorAll('.sequence-caption').forEach(node => node.classList.add('effects-caption'));
+  // Cursor layer: comet trail and click bursts. Fixed above content, never intercepts pointers.
+  const cursorCanvas=document.createElement('canvas');
+  cursorCanvas.className='cursor-fx';
+  cursorCanvas.setAttribute('aria-hidden','true');
+  document.body.append(cursorCanvas);
+  const cctx=cursorCanvas.getContext('2d');
+  const trailColors=['#a7ffda','#e8af66','#fff4d7','#bfd398'];
+  let cursorRAF=0,cursorLast=0,trail=[],bursts=[];
+  function resizeCursor(){
+    const d=Math.min(2,window.devicePixelRatio||1);
+    cursorCanvas.width=Math.max(1,Math.round(innerWidth*d));
+    cursorCanvas.height=Math.max(1,Math.round(innerHeight*d));
+    cctx.setTransform(d,0,0,d,0,0);
+    cctx.imageSmoothingEnabled=false;
+  }
+  function stopCursor(){
+    cancelAnimationFrame(cursorRAF);cursorRAF=0;cursorLast=0;trail=[];bursts=[];
+    cctx?.clearRect(0,0,innerWidth,innerHeight);
+  }
+  function startCursor(){
+    if(cursorRAF||noMotion()||document.hidden)return;
+    cursorLast=0;cursorRAF=requestAnimationFrame(cursorFrame);
+  }
+  function cursorFrame(now){
+    cursorRAF=0;
+    if(noMotion()||document.hidden){stopCursor();return;}
+    const dt=cursorLast?Math.min(.05,(now-cursorLast)/1000):0;cursorLast=now;
+    while(trail.length&&now-trail[0].t>340)trail.shift();
+    for(let i=bursts.length-1;i>=0;i--){
+      const b=bursts[i];b.life-=dt;
+      if(b.life<=0){bursts.splice(i,1);continue;}
+      b.vy+=300*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;b.vx*=(1-1.8*dt);
+    }
+    if(!trail.length&&!bursts.length){stopCursor();return;}
+    cctx.clearRect(0,0,innerWidth,innerHeight);
+    for(let i=0;i<trail.length;i++){
+      const point=trail[i],age=(now-point.t)/340;
+      if(age>=1)continue;
+      const k=1-age;
+      cctx.globalAlpha=k*.5;
+      cctx.fillStyle=trailColors[i%trailColors.length];
+      cctx.fillRect(Math.round(point.x),Math.round(point.y),1+Math.round(k*2),1+Math.round(k*2));
+    }
+    const head=trail[trail.length-1];
+    if(head&&now-head.t<340){
+      const hx=Math.round(head.x),hy=Math.round(head.y);
+      cctx.globalAlpha=.95;cctx.fillStyle='#f4ffd8';
+      cctx.fillRect(hx-1,hy-1,3,3);
+      cctx.globalAlpha=.45;
+      cctx.fillRect(hx-5,hy,11,1);cctx.fillRect(hx,hy-5,1,11);
+    }
+    for(const b of bursts){
+      cctx.globalAlpha=Math.max(0,Math.min(1,b.life*1.6))*.9;
+      cctx.fillStyle=b.color;
+      cctx.fillRect(Math.round(b.x),Math.round(b.y),b.size,b.size);
+    }
+    cctx.globalAlpha=1;
+    cursorRAF=requestAnimationFrame(cursorFrame);
+  }
+  addEventListener('pointermove',e=>{
+    if(e.pointerType==='touch'||noMotion())return;
+    trail.push({x:e.clientX,y:e.clientY,t:performance.now()});
+    if(trail.length>18)trail.shift();
+    startCursor();
+  },{passive:true});
+  addEventListener('pointerdown',e=>{
+    if(noMotion())return;
+    const count=innerWidth<=740?10:16;
+    for(let i=0;i<count;i++){
+      const angle=i*2.39996,speed=55+((i*41)%95);
+      bursts.push({x:e.clientX,y:e.clientY,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-45,life:.5+((i*17)%5)*.07,size:i%3===0?4:2,color:trailColors[i%trailColors.length]});
+    }
+    if(bursts.length>72)bursts.splice(0,bursts.length-72);
+    startCursor();
+  },{passive:true});
+  addEventListener('resize',resizeCursor);
+  resizeCursor();
   window.__adventureEffects = {
     stop: () => { cancelLoops(true); stopCanvas(); },
-    get state() { return {raf:!!raf,fade:Number(fade.toFixed(2)),fadePhase,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),theme:infoThemes[getAdventure()?.cur||0],backgroundLayer:0,foregroundLayer:1,version:'fade-motes-1'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
+    get state() { return {raf:!!raf,fade:Number(fade.toFixed(2)),fadePhase,particles:particles.length,dpr,frames,cursor:{trail:trail.length,bursts:bursts.length,running:Boolean(cursorRAF)},information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),theme:infoThemes[getAdventure()?.cur||0],backgroundLayer:0,foregroundLayer:1,version:'fade-motes-1'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
   };
   resizeCanvas(); reconcile();
 })();

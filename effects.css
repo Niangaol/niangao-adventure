@@ -36,3 +36,15 @@ body.low-motion .effects-information .chapter-stamp::after{display:none}
 @media (prefers-reduced-motion:reduce) { .effects-canvas { visibility:hidden; } .effects-live .effects-cartridge.selected .cart-icon::after,.effects-live .effects-caption::after { animation:none; } }
 body.low-motion .effects-canvas { visibility:hidden; }
 body.low-motion .effects-cartridge.selected .cart-icon::after,body.low-motion .effects-caption::after { animation:none; }
+/* Cursor comet and click bursts live above content but never intercept pointers. */
+.cursor-fx{position:fixed;inset:0;z-index:90;pointer-events:none}
+body.low-motion .cursor-fx{display:none}
+@media(prefers-reduced-motion:reduce){.cursor-fx{display:none}}
+/* Agent thinking orbit: stepped pixel motion, stops with reduced motion. */
+.agent-orbit{position:relative;width:16px;height:16px;flex:none}
+.agent-orbit i{position:absolute;left:6px;top:6px;width:4px;height:4px;background:var(--jade,#4d8067);animation:agent-orbit-spin 1.7s steps(8,end) infinite}
+.agent-orbit i:last-child{background:var(--sun,#e8af66);animation-delay:-.85s}
+@keyframes agent-orbit-spin{from{transform:rotate(0deg) translateY(-6px)}to{transform:rotate(360deg) translateY(-6px)}}
+.agent-thinking{font-size:12px;color:var(--line,#6a8780);min-width:4.5em}
+@media(prefers-reduced-motion:reduce){.agent-orbit i{animation:none;transform:translateY(-6px)}}
+body.low-motion .agent-orbit i{animation:none;transform:translateY(-6px)}
