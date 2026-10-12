@@ -10,10 +10,10 @@
   const hasDialog = () => !!document.querySelector('dialog[open]');
   const available = () => !!getAdventure() && !getAdventure().booting && !getAdventure().moving && !document.hidden && !noMotion() && !hasDialog();
   const configs = [
-    {key:'hero', chapter:0, id:'heroFilm', parent:'.hero-cta'},
+    {key:'hero', chapter:0, id:'heroFilm', parent:'.hero-cta', auto:true},
     {key:'project', chapter:2, id:'projectPlay', parent:'.project-foot', auto:true},
     {key:'lab', chapter:3, id:'labPlay', auto:true},
-    {key:'photos', chapter:5, id:'photoFilm'}
+    {key:'photos', chapter:5, id:'photoFilm', auto:true}
   ];
   const loops = configs.map(config => {
     const play = document.getElementById(config.id);
