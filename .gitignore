@@ -10,3 +10,5 @@ photo-manifest.json
 *.secret.json
 backend/
 启动年糕Agent.cmd
+查看年糕Agent状态.cmd
+暂停年糕Agent守护.cmd
