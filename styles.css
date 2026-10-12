@@ -38,9 +38,10 @@ html{color-scheme:light dark}
 @media (prefers-color-scheme: dark){
   :root{--ink:#e9f1e0;--ink2:#a9c6b6;--paper:#1f3239;--mint:#15262e;--sky:#2a4552;--lake:#4d8090;--jade:#7cc0a6;--grass:#5f8f68;--sun:#e9b76a;--red:#dd8e7a;--line:#739a93;color-scheme:dark}
   body{background:#0c181e}
-  .console{box-shadow:inset 0 0 0 3px #0a1418}
+  .console{border-color:#0b1a21;box-shadow:inset 0 0 0 3px #0a1418}
   .console::before{border-color:#081014}
   #viewport{background:#11202a}
+  .level-nav{background:#1b2f37}
   .scene{background:#182a33;scrollbar-color:#4f7a72 #11202a}
   .pixel-panel{box-shadow:6px 6px 0 #0a1418}
   .pixel-panel::before{border-color:#2e4750}

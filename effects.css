@@ -37,9 +37,8 @@ body.low-motion .effects-information .chapter-stamp::after{display:none}
 body.low-motion .effects-canvas { visibility:hidden; }
 body.low-motion .effects-cartridge.selected .cart-icon::after,body.low-motion .effects-caption::after { animation:none; }
 /* Cursor comet and click bursts live above content but never intercept pointers. */
+/* Cursor feedback follows the user own input; it stays visible (calmer) under reduced motion. */
 .cursor-fx{position:fixed;inset:0;z-index:90;pointer-events:none}
-body.low-motion .cursor-fx{display:none}
-@media(prefers-reduced-motion:reduce){.cursor-fx{display:none}}
 /* Agent thinking orbit: stepped pixel motion, stops with reduced motion. */
 .agent-orbit{position:relative;width:16px;height:16px;flex:none}
 .agent-orbit i{position:absolute;left:6px;top:6px;width:4px;height:4px;background:var(--jade,#4d8067);animation:agent-orbit-spin 1.7s steps(8,end) infinite}

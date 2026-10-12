@@ -306,7 +306,12 @@
   document.body.append(cursorCanvas);
   const cctx=cursorCanvas.getContext('2d');
   const trailColors=['#a7ffda','#e8af66','#fff4d7','#bfd398'];
-  let cursorRAF=0,cursorLast=0,trail=[],bursts=[];
+  let cursorRAF=0,cursorLast=0,trail=[],bursts=[],lastBurst=null;
+  // Cursor feedback answers the user's own input, so it stays available even when the
+  // system asks for reduced motion (common on macOS); it only becomes calmer there.
+  const calm=()=>reduced.matches;
+  const trailLife=()=>calm()?240:340;
+  const trailCap=()=>calm()?10:18;
   function resizeCursor(){
     const d=Math.min(2,window.devicePixelRatio||1);
     cursorCanvas.width=Math.max(1,Math.round(innerWidth*d));
@@ -319,14 +324,34 @@
     cctx?.clearRect(0,0,innerWidth,innerHeight);
   }
   function startCursor(){
-    if(cursorRAF||noMotion()||document.hidden)return;
+    if(cursorRAF||document.hidden)return;
     cursorLast=0;cursorRAF=requestAnimationFrame(cursorFrame);
+  }
+  function pushTrail(x,y){
+    const now=performance.now(),last=trail[trail.length-1];
+    if(last&&last.x===x&&last.y===y&&now-last.t<32)return;
+    trail.push({x,y,t:now});
+    while(trail.length>trailCap())trail.shift();
+    startCursor();
+  }
+  function spawnBurst(x,y){
+    const now=performance.now();
+    if(lastBurst&&lastBurst.x===x&&lastBurst.y===y&&now-lastBurst.t<80)return;
+    lastBurst={x,y,t:now};
+    const count=calm()?8:(innerWidth<=740?10:16);
+    for(let i=0;i<count;i++){
+      const angle=i*2.39996,speed=55+((i*41)%95);
+      bursts.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-45,life:.5+((i*17)%5)*.07,size:calm()?2:(i%3===0?4:2),color:trailColors[i%trailColors.length]});
+    }
+    if(bursts.length>72)bursts.splice(0,bursts.length-72);
+    startCursor();
   }
   function cursorFrame(now){
     cursorRAF=0;
-    if(noMotion()||document.hidden){stopCursor();return;}
+    if(document.hidden){stopCursor();return;}
     const dt=cursorLast?Math.min(.05,(now-cursorLast)/1000):0;cursorLast=now;
-    while(trail.length&&now-trail[0].t>340)trail.shift();
+    const life=trailLife();
+    while(trail.length&&now-trail[0].t>life)trail.shift();
     for(let i=bursts.length-1;i>=0;i--){
       const b=bursts[i];b.life-=dt;
       if(b.life<=0){bursts.splice(i,1);continue;}
@@ -335,7 +360,7 @@
     if(!trail.length&&!bursts.length){stopCursor();return;}
     cctx.clearRect(0,0,innerWidth,innerHeight);
     for(let i=0;i<trail.length;i++){
-      const point=trail[i],age=(now-point.t)/340;
+      const point=trail[i],age=(now-point.t)/life;
       if(age>=1)continue;
       const k=1-age;
       cctx.globalAlpha=k*.5;
@@ -343,7 +368,7 @@
       cctx.fillRect(Math.round(point.x),Math.round(point.y),1+Math.round(k*2),1+Math.round(k*2));
     }
     const head=trail[trail.length-1];
-    if(head&&now-head.t<340){
+    if(head&&now-head.t<life){
       const hx=Math.round(head.x),hy=Math.round(head.y);
       cctx.globalAlpha=.95;cctx.fillStyle='#f4ffd8';
       cctx.fillRect(hx-1,hy-1,3,3);
@@ -358,22 +383,14 @@
     cctx.globalAlpha=1;
     cursorRAF=requestAnimationFrame(cursorFrame);
   }
+  // Pointer events first; mouse events are a fallback for environments that skip them.
   addEventListener('pointermove',e=>{
-    if(e.pointerType==='touch'||noMotion())return;
-    trail.push({x:e.clientX,y:e.clientY,t:performance.now()});
-    if(trail.length>18)trail.shift();
-    startCursor();
+    if(e.pointerType==='touch')return;
+    pushTrail(e.clientX,e.clientY);
   },{passive:true});
-  addEventListener('pointerdown',e=>{
-    if(noMotion())return;
-    const count=innerWidth<=740?10:16;
-    for(let i=0;i<count;i++){
-      const angle=i*2.39996,speed=55+((i*41)%95);
-      bursts.push({x:e.clientX,y:e.clientY,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-45,life:.5+((i*17)%5)*.07,size:i%3===0?4:2,color:trailColors[i%trailColors.length]});
-    }
-    if(bursts.length>72)bursts.splice(0,bursts.length-72);
-    startCursor();
-  },{passive:true});
+  addEventListener('mousemove',e=>{pushTrail(e.clientX,e.clientY);},{passive:true});
+  addEventListener('pointerdown',e=>{spawnBurst(e.clientX,e.clientY);},{passive:true});
+  addEventListener('mousedown',e=>{if(e.button===0)spawnBurst(e.clientX,e.clientY);},{passive:true});
   addEventListener('resize',resizeCursor);
   resizeCursor();
   window.__adventureEffects = {
