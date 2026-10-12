@@ -11,7 +11,7 @@
     const { agentConnection: connection, agentMessages: log, agentSuggestions: suggestions, agentForm: form, agentInput: input, agentCharCount: count, agentReset: reset, agentStop: stop, agentSend: send, agentStatus: status, agentReconnect: reconnect } = nodes;
     const config = window.NIANGAO_AGENT_CONFIG;
     const localHost = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
-    const base = localHost ? '' : (typeof config?.apiBase === 'string' ? config.apiBase : '').replace(/\/+$/, '');
+    let base = localHost ? '' : (typeof config?.apiBase === 'string' ? config.apiBase : '').replace(/\/+$/, '');
     let transport = 'sse';
     const HARD_INPUT = 1500, HARD_HISTORY = 12, HARD_OUTPUT = 6000;
     const HEALTH_TIMEOUT = 8000, REQUEST_TIMEOUT = 120000, IDLE_TIMEOUT = 45000;
@@ -452,6 +452,31 @@
       if (event.detail?.index !== 7) cancelCurrent('已离开营地，停止生成。');
     });
     window.addEventListener('pagehide', () => cancelCurrent('页面已离开，停止生成。'));
+    // PC-hosted tunnel address changes; a long-open tab keeps a working reply path.
+    if (!localHost) {
+      const configFile = document.currentScript?.src?.replace(/[^/]*$/, '') + 'agent-config.js';
+      setInterval(async () => {
+        if (document.hidden) return;
+        try {
+          const response = await fetch(new URL('agent-config.js', document.baseURI).href + '?live=' + Date.now(), { cache: 'no-store' });
+          if (!response.ok) return;
+          const text = await response.text();
+          const match = text.match(/apiBase["']?\s*:\s*["'](https:\/\/[a-z0-9-]+\.trycloudflare\.com)["']/);
+          const fresh = match ? match[1] : '';
+          if (fresh && fresh !== base) {
+            const previous = base;
+            base = fresh;
+            if (!active && !healthRequest) checkHealth();
+            else {
+              ready = false;
+              setConnection('隧道地址已变化，正在重连', 'checking');
+              announce('电脑上的服务换了新地址，正在自动重连。');
+            }
+            void previous;
+          }
+        } catch { /* Keep the current working address; the next health probe decides. */ }
+      }, 45000);
+    }
     reconnect.addEventListener('click', checkHealth);
     syncControls();
     checkHealth();
