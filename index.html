@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0c181e" media="(prefers-color-scheme: dark)"><meta name="description" content="李念（年糕）的像素冒险。杭电 2026 级智能科学与技术，写代码、玩游戏，也带着相机看世界。">
 <title>李念 · 年糕的像素冒险</title>
 <link rel="preload" href="assets/fonts/fusion-pixel.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=image-loader-2">
+<link rel="stylesheet" href="styles.css?v=lab-fx-2">
 <link rel="stylesheet" href="agent-chat.css?v=dark-mode-1">
 <link rel="stylesheet" href="effects.css?v=cursor-tracking-fix">
 </head>
@@ -44,7 +44,32 @@
     </section>
     <section class="scene" id="pokemon" aria-labelledby="pokemonTitle" hidden>
       <div class="section-heading"><div><img class="scene-icon" src="assets/art/icon-pokedex-48.png" alt="" aria-hidden="true" width="44" height="44"><p class="location-tag">宝可梦研究所 / 爱好变成练习</p><h2 id="pokemonTitle">把喜欢的东西，<br>写成自己的工具。</h2></div><span class="chapter-stamp">03 / 研究所</span></div>
-      <div class="lab-layout"><div class="lab-copy"><h3>PokemonData</h3><p>一个给自己用的宝可梦工具站：图鉴、伤害计算、速度线，再接上能对话查数据的 Agent。</p><div class="tech-line"><span>.NET 8</span><span>Vue 3</span><span>Agent · 11 个工具</span></div><p>想配队、想算伤害的时候，也想试着理解：一套前后端系统，是怎么真的接在一起的。</p><div class="lab-controls" role="group" aria-label="选择工具说明"><button class="selected" data-tool="dex" aria-pressed="true">图鉴</button><button data-tool="damage" aria-pressed="false">伤害</button><button data-tool="speed" aria-pressed="false">速度线</button></div></div><div class="lab-screen pixel-panel"><div class="lab-monitor"><div class="pixel-ball" aria-hidden="true"><i></i></div><div><p id="toolCode">图鉴模块</p><h3 id="toolTitle">从一句问题，到一条数据。</h3><p id="toolBody">让 Agent 选择合适的工具，查询图鉴信息，再给出可读的回答。</p></div></div><div class="tool-flow"><span>你的问题</span><i>→</i><span>工具调用</span><i>→</i><span>查询结果</span></div><p class="demo-disclaimer">这里展示功能结构，不运行实际宝可梦伤害计算。</p><button id="labPlay" class="primary">播放工具调用 <small>10 秒</small></button><div id="labCaption" class="sequence-caption" role="status">先理解工具，再理解 Agent。</div></div></div>
+      <div class="lab-layout"><div class="lab-copy"><h3>PokemonData</h3><p>一个给自己用的宝可梦工具站：图鉴、伤害计算、速度线，再接上能对话查数据的 Agent。</p><div class="tech-line"><span>.NET 8</span><span>Vue 3</span><span>Agent · 11 个工具</span></div><p>想配队、想算伤害的时候，也想试着理解：一套前后端系统，是怎么真的接在一起的。</p><div class="lab-controls" role="group" aria-label="选择工具说明"><button class="selected" data-tool="dex" aria-pressed="true">图鉴</button><button data-tool="damage" aria-pressed="false">伤害</button><button data-tool="speed" aria-pressed="false">速度线</button></div></div><div class="lab-screen pixel-panel">
+        <div class="lab-stage" data-demo="dex">
+          <div class="dex-view">
+            <div class="dex-frame"><div class="dex-sprite" id="dexSprite" aria-hidden="true"></div><div class="dex-scan" aria-hidden="true"></div><span class="dex-no">No.445 · 数据为公开种族值，形象为原创示意</span></div>
+            <div class="dex-data"><div class="dex-types" id="dexTypes"><span class="type dragon">龙</span><span class="type ground">地面</span></div><div class="dex-stats" id="dexStats"></div><div class="dex-ability"><b>特性</b><span id="dexAbility">鲨鱼皮</span></div></div>
+          </div>
+        </div>
+        <div class="lab-stage" data-demo="damage" hidden>
+          <div class="dmg-view">
+            <p class="dmg-query"><span class="prompt">&gt;</span><span id="dmgQuery"></span><i class="caret" aria-hidden="true"></i></p>
+            <div class="dmg-slots" id="dmgSlots"><div class="dmg-slot"><small>攻击方</small><b>呆呆王</b></div><div class="dmg-slot"><small>招式</small><b>冰冻之光</b></div><div class="dmg-slot"><small>防守方</small><b>烈咬陆鲨</b></div></div>
+            <div class="dmg-tools" id="dmgTools"><span>图鉴查询</span><span>伤害计算</span><span>速度线</span><span>配队建议</span></div>
+            <div class="dmg-result" id="dmgResult"><div class="dmg-bar"><i id="dmgBar"></i></div><div class="dmg-read"><b id="dmgNum">0</b><small>%</small><span class="dmg-tag" id="dmgTag">效果绝佳</span></div><p class="dmg-note">冰 → 龙 2 倍、冰 → 地面 2 倍，合计 4 倍 · 伤害期望为演示占位</p></div>
+          </div>
+        </div>
+        <div class="lab-stage" data-demo="speed" hidden>
+          <div class="spd-view" id="spdView">
+            <div class="spd-racer"><div class="spd-head"><span class="spd-av av-a" aria-hidden="true"></span><span><b>烈咬陆鲨</b><small>龙 / 地面</small></span></div><div class="spd-track"><i></i><em>终点</em></div><div class="spd-foot">速度 <b>102</b><span class="spd-rank">出手判定</span></div></div>
+            <div class="spd-racer"><div class="spd-head"><span class="spd-av av-b" aria-hidden="true"></span><span><b>土地云</b><small>地面 / 飞行</small></span></div><div class="spd-track"><i></i><em>终点</em></div><div class="spd-foot">速度 <b>91</b><span class="spd-rank">出手判定</span></div></div>
+            <p class="spd-verdict" id="spdVerdict">烈咬陆鲨 先手</p>
+          </div>
+        </div>
+        <p class="demo-disclaimer">界面为功能结构示意，数值是演示占位，不运行实际宝可梦计算。</p>
+        <div class="lab-actions"><button id="labPlay" class="primary">播放演示 <small id="labTime">8 秒</small></button><button id="labAll" class="cream">连续播放 <small>28 秒</small></button></div>
+        <div id="labCaption" class="sequence-caption" role="status">选一个工具，看它怎么跑起来。</div>
+      </div></div>
       <div class="next-level"><span>离开研究所，回到玩家自己的卡带架。</span><button data-go="4">打开游戏背包 →</button></div>
     </section>
     <section class="scene" id="games" aria-labelledby="gamesTitle" hidden>
@@ -95,7 +120,7 @@
 <noscript><div class="noscript-message">请开启 JavaScript 来探索关卡。你仍可以通过 niangaol@qq.com 联系李念。</div></noscript>
 <script>/* Last-resort loader safety net: clear the opening overlay even if scripts fail. */
 setTimeout(function(){var b=document.getElementById('boot');if(b&&!b.hidden){b.hidden=true;b.classList.remove('exiting');var c=document.querySelector('.console');if(c)c.inert=false;}},15000);</script>
-<script src="world.js?v=image-loader-2" defer></script><script src="app.js?v=image-loader-2" defer></script>
+<script src="world.js?v=lab-fx-2" defer></script><script src="app.js?v=lab-fx-2" defer></script>
 <script src="agent-config.js" defer></script><script src="agent-chat.js" defer></script>
 <script src="effects.js?v=cursor-tracking-fix" defer></script>
 </body></html>
