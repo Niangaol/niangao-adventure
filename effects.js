@@ -316,6 +316,10 @@
     const d=Math.min(2,window.devicePixelRatio||1);
     cursorCanvas.width=Math.max(1,Math.round(innerWidth*d));
     cursorCanvas.height=Math.max(1,Math.round(innerHeight*d));
+    // Pin the CSS box to the viewport: a replaced element with auto size would use the
+    // (DPR-scaled) buffer as its layout size and overflow toward the bottom-right.
+    cursorCanvas.style.width=innerWidth+'px';
+    cursorCanvas.style.height=innerHeight+'px';
     cctx.setTransform(d,0,0,d,0,0);
     cctx.imageSmoothingEnabled=false;
   }
@@ -355,7 +359,7 @@
     for(let i=bursts.length-1;i>=0;i--){
       const b=bursts[i];b.life-=dt;
       if(b.life<=0){bursts.splice(i,1);continue;}
-      b.vy+=300*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;b.vx*=(1-1.8*dt);
+      b.vy+=170*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;b.vx*=(1-2.4*dt);b.vy*=(1-1.2*dt);
     }
     if(!trail.length&&!bursts.length){stopCursor();return;}
     cctx.clearRect(0,0,innerWidth,innerHeight);
