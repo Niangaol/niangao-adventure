@@ -6,6 +6,8 @@
 <title>李念 · 年糕的像素冒险</title>
 <link rel="preload" href="assets/fonts/fusion-pixel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="agent-chat.css">
+<link rel="stylesheet" href="effects.css">
 </head>
 <body>
 <a class="skip-link" href="#viewport">跳到介绍内容</a>
@@ -63,7 +65,22 @@
     </section>
     <!-- Epilogue: plain contact, unfinished player, optional celebratory easter egg. -->
     <section class="scene" id="camp" aria-labelledby="campTitle" hidden>
-      <div class="camp-scene"><canvas id="campCanvas" width="480" height="150" aria-hidden="true"></canvas><div class="camp-copy"><p class="location-tag">组队营地 / To be continued</p><h2 id="campTitle">还在学，还在长。<br>下一关，想一起打。</h2><p>想加入 AI Vibe：因为真正在用，也有做过的东西。<br>更想找一群同频的人，把想法继续往前推。</p><div class="contact-actions"><a class="primary" href="mailto:niangaol@qq.com">给年糕发邮件 ↗</a><a class="cream" href="https://github.com/Niangaol" target="_blank" rel="noopener">GitHub / Niangaol ↗</a></div><span class="email-line">niangaol@qq.com</span></div></div><div class="camp-bottom"><p>问题随便问，答不上来的我回去学。</p><button id="eggEntrance" class="cream">发现隐藏玩家 <span aria-hidden="true">✦</span></button><button data-go="0" class="text-button">回到开场 ↑</button></div><footer><span>© 2026 李念 · 个人介绍与摄影作品</span><span>原创像素场景 · Fusion Pixel Font <a href="https://github.com/TakWolf/fusion-pixel-font" target="_blank" rel="noopener">字体来源</a></span><span>隐藏秘技：↑↑↓↓←→←→BA</span></footer>
+      <div class="camp-scene"><canvas id="campCanvas" width="480" height="150" aria-hidden="true"></canvas><div class="camp-copy"><p class="location-tag">组队营地 / To be continued</p><h2 id="campTitle">还在学，还在长。<br>下一关，想一起打。</h2><p>想加入 AI Vibe：因为真正在用，也有做过的东西。<br>更想找一群同频的人，把想法继续往前推。</p><div class="contact-actions"><a class="primary" href="mailto:niangaol@qq.com">给年糕发邮件 ↗</a><a class="cream" href="https://github.com/Niangaol" target="_blank" rel="noopener">GitHub / Niangaol ↗</a></div><span class="email-line">niangaol@qq.com</span></div></div><div class="camp-bottom"><p>问题随便问，答不上来的我回去学。</p><button id="eggEntrance" class="cream">发现隐藏玩家 <span aria-hidden="true">✦</span></button><button data-go="0" class="text-button">回到开场 ↑</button></div>
+<section class="agent-section" id="niangaoAgent" aria-labelledby="agentTitle">
+  <div class="agent-heading"><p class="location-tag">终章加映 / 和我的 AI 分身聊聊</p><h2 id="agentTitle">我把自己蒸馏成一个Agent</h2><p>照片和项目讲完了，这次换一种方式认识我：和 <strong>年糕.Agent</strong> 聊几句。</p></div>
+  <div class="agent-layout">
+    <aside class="agent-card pixel-panel"><span class="agent-badge">年糕.Agent · AI 角色</span><h3>这张存档，会说话。</h3><p>从我授权的人设资料里，整理出公开身份、项目、游戏、摄影、学习习惯和说话方式。</p><ul><li>有点直给，不太爱装懂</li><li>喜欢宝可梦，也喜欢折腾 Agent</li><li>写代码之外，带着相机看世界</li></ul><p>“蒸馏”是这个作品的比喻。实际使用人设提示词，不是训练或微调模型；回复由 AI 生成，不代表本人即时发言或承诺。</p><p class="side-note">后端运行在年糕的电脑。电脑或连接服务不在线时，就先看看相册和项目。</p></aside>
+    <div class="agent-terminal pixel-panel">
+      <div class="agent-terminal-head"><span>年糕.Agent</span><span id="agentConnection" role="status">连接检查中</span></div>
+      <div id="agentMessages" class="agent-messages" role="log" aria-label="年糕.Agent对话" aria-live="off"></div>
+      <div id="agentSuggestions" class="agent-suggestions"><button type="button" data-agent-question="你是怎样开始做项目的？">聊项目</button><button type="button" data-agent-question="为什么喜欢宝可梦？">聊游戏</button><button type="button" data-agent-question="摄影对你来说是什么？">聊摄影</button></div>
+      <form id="agentForm"><label for="agentInput">给年糕.Agent 发消息</label><textarea id="agentInput" maxlength="1500" rows="3" placeholder="你为什么喜欢摄影？或者，聊点别的……"></textarea><div class="agent-form-actions"><span id="agentCharCount">0 / 1500</span><button type="button" id="agentReset">重开对话</button><button type="button" id="agentStop" hidden>停止生成</button><button type="submit" id="agentSend" class="primary" disabled>发送</button></div></form>
+      <p id="agentStatus" class="agent-status" role="status" aria-live="polite"></p><button type="button" id="agentReconnect" class="text-button" hidden>重试连接</button>
+      <p class="agent-privacy">消息会通过年糕电脑转发给模型供应商。页面仅在本次打开期间保留对话；聊天不落盘，服务端只持久化限额计数；请不要输入隐私、密码或令牌。</p>
+    </div>
+  </div>
+</section>
+<footer><span>© 2026 李念 · 个人介绍与摄影作品</span><span>原创像素场景 · Fusion Pixel Font <a href="https://github.com/TakWolf/fusion-pixel-font" target="_blank" rel="noopener">字体来源</a></span><span>隐藏秘技：↑↑↓↓←→←→BA</span></footer>
     </section>
   </main>
   <div class="bottom-hud"><div class="hud-chapter"><span id="levelNumber">00</span><div><b id="levelName">冒险开场</b><small id="levelCount">第 1 / 8 关</small></div></div><div class="hud-route" id="hudRoute" aria-hidden="true"></div><span class="hud-tip">关内滚动阅读 · 边界换关</span><button id="presenterOpen" class="text-button">演讲笔记 <kbd>P</kbd></button><div class="nav-buttons"><button id="prevLevel" aria-label="上一关" disabled>←</button><button id="nextLevel" aria-label="下一关">下一关 →</button></div></div>
@@ -76,4 +93,6 @@
 <dialog id="eggDialog" class="egg-dialog" aria-labelledby="eggTitle"><canvas id="eggCanvas" width="480" height="320" aria-hidden="true"></canvas><button class="egg-dismiss" data-close="eggDialog" aria-label="关闭彩蛋">×</button><div class="egg-content"><span class="egg-label">隐藏玩家 / 遭遇成功</span><div class="egg-ball"><div class="pixel-ball"><i></i></div><span class="egg-ring r1"></span><span class="egg-ring r2"></span></div><h2 id="eggTitle">年糕出现了！</h2><p id="eggSubtitle">谢谢你探索到最后。</p><button id="captureEgg" class="primary">收服它</button><div class="egg-hint">Esc 可关闭 / 每次探索都有新故事</div></div></dialog>
 <noscript><div class="noscript-message">请开启 JavaScript 来探索关卡。你仍可以通过 niangaol@qq.com 联系李念。</div></noscript>
 <script src="world.js" defer></script><script src="app.js" defer></script>
+<script src="agent-config.js" defer></script><script src="agent-chat.js" defer></script>
+<script src="effects.js" defer></script>
 </body></html>

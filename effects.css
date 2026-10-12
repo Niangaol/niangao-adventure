@@ -1,0 +1,24 @@
+/* GBA hardware glints: inherited pixel font and existing palette, no photo filter. */
+.effects-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:4; pointer-events:none; image-rendering:pixelated; }
+.effects-loop-host { flex-wrap:wrap; }
+.effects-loop { display:inline-flex; align-items:center; justify-content:center; gap:7px; max-width:100%; font:inherit; font-size:14px; min-height:42px; padding:7px 10px; margin-block:4px; background:var(--mint,#dbe9cc); color:var(--ink,#253e43); border:2px solid var(--ink,#253e43); box-shadow:2px 2px 0 var(--line,#6a8780); white-space:nowrap; }
+.effects-loop::before { content:''; width:6px; height:6px; flex:none; background:var(--line,#6a8780); box-shadow:2px 2px 0 var(--paper,#fff4d7); }
+.effects-loop[aria-pressed='true'] { background:#bfd398; }
+.effects-loop[aria-pressed='true']::before { background:var(--jade,#4d8067); }
+.effects-loop:focus-visible { outline:3px solid var(--red,#b76350); outline-offset:4px; }
+.effects-loop:disabled { opacity:.55; cursor:not-allowed; }
+.effects-cartridge.selected .cart-icon::after { content:''; position:absolute; top:10px; left:5px; width:4px; height:3px; background:var(--paper,#fff4d7); box-shadow:5px 0 0 #e8af66; pointer-events:none; }
+.effects-live .effects-cartridge.selected .cart-icon::after { animation:effects-cart-scan 5s steps(4,end) infinite; }
+.effects-parcel-stage .package::after { content:''; position:absolute; left:3px; top:3px; width:5px; height:3px; background:#fff4d7; box-shadow:7px 0 0 #e8af66; pointer-events:none; }
+/* Frame glints stay in the 12px mat, outside the actual photograph. */
+.effects-photo-frame::after { content:''; position:absolute; inset:6px; border:0; background:none; box-shadow:inset 3px 3px 0 rgba(232,175,102,.65),inset -3px -3px 0 rgba(77,128,103,.55); pointer-events:none; }
+.effects-caption { border-left:3px solid var(--jade,#4d8067); padding-left:10px; }
+.effects-caption::after { content:' ▪ ▪ ▪'; display:inline-block; color:var(--jade,#4d8067); letter-spacing:2px; font-size:11px; }
+.effects-live .effects-caption::after { animation:effects-caption-dots 3s steps(3,end) infinite; }
+@keyframes effects-cart-scan { 0%,65%,100% { transform:translateX(0); } 82% { transform:translateX(16px); } }
+@keyframes effects-caption-dots { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-2px); } }
+@media (hover:hover) and (pointer:fine) { .effects-loop:not(:disabled):hover { background:var(--sun,#e8af66); } }
+@media (max-width:740px) { .effects-loop { font-size:13px; min-height:42px; padding:6px 9px; } .hero-cta .effects-loop { font-size:14px; } }
+@media (prefers-reduced-motion:reduce) { .effects-canvas { visibility:hidden; } .effects-live .effects-cartridge.selected .cart-icon::after,.effects-live .effects-caption::after { animation:none; } }
+body.low-motion .effects-canvas { visibility:hidden; }
+body.low-motion .effects-cartridge.selected .cart-icon::after,body.low-motion .effects-caption::after { animation:none; }
