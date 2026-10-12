@@ -23,6 +23,15 @@ dialog{font-family:var(--font);font-size:18px;color:var(--ink);border:4px solid 
 @media(max-width:370px){.brand small{display:none}.brand{font-size:14px}.system-actions button{font-size:11px;padding:5px}.hero-copy h1{font-size:54px}.hero-cta{flex-direction:column;align-items:flex-start}.hero-cta button{font-size:15px}.hero-photo{width:130px}.hero-photo img{height:74px}.section-heading h2{font-size:29px}.chapter-stamp{font-size:10px;padding:4px 6px}.work-menu{grid-template-columns:1fr}.work-menu .side-note{grid-column:1}.hud-chapter b{font-size:11px}.bottom-hud #presenterOpen{font-size:10px}.nav-buttons button{font-size:11px;padding:5px}.lab-monitor{gap:12px}.lab-monitor .pixel-ball{width:56px;height:56px}.lab-monitor h3{font-size:20px}.photo-meta h3{font-size:18px}.boot-word h2{font-size:24px}.photo-thumbnails{grid-template-columns:repeat(5,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+/* Hand-drawn pixel assets: scene icons, mascot and camp banner. */
+.scene-icon{width:44px;height:44px;object-fit:contain;image-rendering:pixelated;display:block;margin-bottom:10px}
+.hero-mascot{position:absolute;left:24px;bottom:20px;width:118px;height:auto;image-rendering:pixelated;z-index:3;pointer-events:none;animation:mascot-bob 2.6s steps(2,end) infinite}
+@keyframes mascot-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.agent-mascot{width:34px;height:34px;image-rendering:pixelated;flex:none}
+.camp-banner{display:block;width:100%;height:auto;max-height:220px;object-fit:cover;object-position:center 60%;border:3px solid var(--ink);box-shadow:6px 6px 0 #acc292;margin:26px 0 30px;image-rendering:pixelated}
+@media(max-width:740px){.hero-mascot{width:82px;left:14px;bottom:12px}.scene-icon{width:36px;height:36px;margin-bottom:8px}.camp-banner{max-height:150px;margin:20px 0 24px}}
+@media(prefers-reduced-motion:reduce){.hero-mascot{animation:none}}
+body.low-motion .hero-mascot{animation:none}
 /* Dark mode follows the system. Same GBA language, night palette. */
 html{color-scheme:light dark}
 @media (prefers-reduced-motion: no-preference){body,.scene,.pixel-panel,.topbar,.bottom-nav,.bottom-hud,.project-select,.tech-line span,.chapter-stamp,.agent-terminal{transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}}
@@ -52,6 +61,7 @@ html{color-scheme:light dark}
   .pixel-screen{background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(10,25,30,.13) 3px 4px)}
   .favorite-list article,.quest-log article,.next-level{border-color:#3c5a50}
   .journey-line{border-left-color:#3f6b52}
+  .camp-banner{box-shadow:6px 6px 0 #0a1418}
   .hud-route i{background:#3d5f5e}
   .location-tag,.project-select small,.favorite-list p,.quest-log p{color:var(--ink2)}
 }
