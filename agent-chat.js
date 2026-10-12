@@ -149,7 +149,7 @@
         ready = true;
         reconnect.hidden = true;
         setConnection((data.mode === 'local' ? '本机' : '隧道') + '配置已就绪 / ' + data.model.slice(0, 60), 'ready');
-        announce('后端配置已就绪，尚未验证模型调用。这是 AI，不是年糕本人；Enter 发送，Shift + Enter 换行。');
+        announce('后端已连接。这是 AI，不是年糕本人；Enter 发送，Shift + Enter 换行。');
       } catch (error) {
         if (healthRequest !== request || request.sequence !== healthSequence) return;
         ready = false;
