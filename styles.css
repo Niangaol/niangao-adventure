@@ -25,11 +25,11 @@ dialog{font-family:var(--font);font-size:18px;color:var(--ink);border:4px solid 
 body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 /* Hand-drawn pixel assets: scene icons, mascot and camp banner. */
 .scene-icon{width:44px;height:44px;object-fit:contain;image-rendering:pixelated;display:block;margin-bottom:10px}
-.hero-mascot{position:absolute;left:24px;bottom:20px;width:118px;height:auto;image-rendering:pixelated;z-index:3;pointer-events:none;animation:mascot-bob 2.6s steps(2,end) infinite}
+.hero-mascot{position:absolute;right:28px;bottom:84px;width:112px;height:auto;image-rendering:pixelated;z-index:3;pointer-events:none;animation:mascot-bob 2.6s steps(2,end) infinite}
 @keyframes mascot-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .agent-mascot{width:34px;height:34px;image-rendering:pixelated;flex:none}
 .camp-banner{display:block;width:100%;height:auto;max-height:220px;object-fit:cover;object-position:center 60%;border:3px solid var(--ink);box-shadow:6px 6px 0 #acc292;margin:26px 0 30px;image-rendering:pixelated}
-@media(max-width:740px){.hero-mascot{width:82px;left:14px;bottom:12px}.scene-icon{width:36px;height:36px;margin-bottom:8px}.camp-banner{max-height:150px;margin:20px 0 24px}}
+@media(max-width:740px){.hero-mascot{display:none}.scene-icon{width:36px;height:36px;margin-bottom:8px}.camp-banner{max-height:150px;margin:20px 0 24px}}
 @media(prefers-reduced-motion:reduce){.hero-mascot{animation:none}}
 body.low-motion .hero-mascot{animation:none}
 /* Dark mode follows the system. Same GBA language, night palette. */
