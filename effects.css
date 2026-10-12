@@ -1,3 +1,11 @@
+/* Pixel information-page accents; the first-scene backdrop remains untouched. */
+.effects-information.effects-live .scene:not(#start) .chapter-stamp{box-shadow:3px 3px 0 #86af96,7px 7px 0 rgba(189,143,75,.22)}
+.effects-information .scene:not(#start) .project-stage,.effects-information .scene:not(#start) .lab-screen,.effects-information .scene:not(#start) .quest-log,.effects-information .scene:not(#start) .character-sheet{border-color:#365d59}
+.effects-information.effects-live .scene:not(#start) .chapter-stamp::after{content:"";position:absolute;left:0;bottom:-4px;width:7px;height:3px;background:#c19452;box-shadow:9px 0 #5b9e8a;animation:effects-info-scan 4s steps(8,end) infinite;pointer-events:none}
+.effects-information .scene:not(#start) .chapter-stamp{position:relative}
+@keyframes effects-info-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(55px)}}
+@media(prefers-reduced-motion:reduce){.effects-information .chapter-stamp::after{animation:none!important;display:none}}
+body.low-motion .effects-information .chapter-stamp::after{display:none}
 /* GBA hardware glints: inherited pixel font and existing palette, no photo filter. */
 .effects-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:4; pointer-events:none; image-rendering:pixelated; }
 .effects-loop-host { flex-wrap:wrap; }

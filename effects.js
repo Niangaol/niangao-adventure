@@ -136,6 +136,33 @@
   const ctx = canvas.getContext('2d');
   let raf = 0, last = 0, width = 0, height = 0, dpr = 1, particles = [], sweeps = [], meteors = [];
   let frames = 0;
+  let infoParticles = [], infoBurst = null, infoChapter = 0, infoFrames = 0;
+  const infoPalettes=[[],['#50877e','#bc874a','#789aa3'],['#4c9691','#bf884b','#62866e'],['#b8754f','#598f7a','#739a9d'],['#ab8151','#5a9c88','#7095a5'],['#5b8a7c','#bd9660','#7898a0'],['#618569','#ab8a55','#65939a'],['#519b86','#c39350','#628b93']];
+  function seedInfo(){
+    const count=innerWidth<=740?40:90;
+    infoParticles=Array.from({length:count},(_,i)=>({x:(i*79.71+17)%Math.max(1,width),y:(i*47.39+31)%Math.max(1,height),size:i%7===0?7:i%3===0?4:3,phase:i*.89,speed:8+i%7*2,kind:i%5===0?'cross':i%4===0?'beam':'dust'}));
+  }
+  function drawInfoPage(now,dt,base,scene){
+    const chapter=getAdventure().cur,palette=infoPalettes[chapter]||infoPalettes[1];
+    infoFrames++;
+    if(infoChapter!==chapter){infoChapter=chapter;const stamp=scene?.querySelector('.chapter-stamp'),r=stamp?.getBoundingClientRect();infoBurst={at:now,x:r?r.left-base.left+r.width*.5:width*.85,y:r?r.top-base.top+r.height*.5:height*.15};}
+    ctx.save();ctx.imageSmoothingEnabled=false;
+    // The full information-page area is available. Foreground text and images are cleared below.
+    infoParticles.forEach((p,i)=>{p.y=(p.y-p.speed*dt+height)%Math.max(1,height);const x=Math.round(p.x+Math.sin(now/1500+p.phase)*13),y=Math.round(p.y),s=p.size;ctx.globalAlpha=.34+.25*(1+Math.sin(now/2200+p.phase))/2;ctx.fillStyle=palette[i%palette.length];
+      if(p.kind==='cross'){ctx.fillRect(x-5,y,12,3);ctx.fillRect(x,y-5,3,12);ctx.globalAlpha*=.35;ctx.fillRect(x-2,y-2,7,7);}
+      else if(p.kind==='beam'){for(let k=0;k<6;k++){ctx.globalAlpha=.42-k*.055;ctx.fillRect(x+k*5,y+k*9,4,7);}}
+      else{ctx.fillRect(x,y,s,s);ctx.globalAlpha*=.3;ctx.fillRect(x+3,y+7,s-1,3);ctx.fillRect(x+5,y+14,2,2);}
+    });
+    // Stepped scanning rays: no blur, smooth ribbon, gradients or background recoloring.
+    for(let ray=0;ray<3;ray++){const sx=(now*.016+ray*width*.34)%(width+160)-80;ctx.fillStyle=palette[ray%3];for(let k=0;k<Math.ceil(height/22);k++){ctx.globalAlpha=.12+(k%4===0?.08:0);ctx.fillRect(Math.round(sx+k*7),k*22,5,18);ctx.globalAlpha=.07;ctx.fillRect(Math.round(sx+k*7+6),k*22,10,3);}}
+    // Pixel packets orbit card outlines, not the original first-scene landscape.
+    const panels=scene?.querySelectorAll('.pixel-panel,.intro-block,.favorite-list article')||[];
+    panels.forEach((node,n)=>{const r=node.getBoundingClientRect();if(!r.width||r.bottom<base.top||r.top>base.bottom)return;const l=r.left-base.left-5,t=r.top-base.top-5,w=r.width+10,h=r.height+10,total=2*(w+h);for(let j=0;j<3;j++){const q=(now*.045+n*80+j*total/3)%total;let x,y;if(q<w){x=l+q;y=t;}else if(q<w+h){x=l+w;y=t+q-w;}else if(q<2*w+h){x=l+2*w+h-q;y=t+h;}else{x=l;y=t+total-q;}ctx.globalAlpha=.75;ctx.fillStyle=palette[(n+j)%3];ctx.fillRect(Math.round(x/2)*2,Math.round(y/2)*2,6,6);ctx.globalAlpha=.3;ctx.fillRect(Math.round(x/2)*2-5,Math.round(y/2)*2,3,3);}});
+    if(infoBurst){const age=(now-infoBurst.at)/900;if(age<1){for(let i=0;i<34;i++){const a=i*2.39996,d=age*(55+i%6*14),x=infoBurst.x+Math.cos(a)*d,y=infoBurst.y+Math.sin(a)*d;ctx.globalAlpha=(1-age)*.8;ctx.fillStyle=palette[i%3];ctx.fillRect(Math.round(x),Math.round(y),i%3===0?5:3,3);}}else infoBurst=null;}
+    ctx.restore();ctx.globalAlpha=1;
+    const protectedNodes=scene?.querySelectorAll('img,canvas,p,h1,h2,h3,h4,button,a,dl,li,figcaption,label,textarea,input,dt,dd,small,[role="status"],[role="log"],.agent-terminal,.photo-main,.story-box,#photoThumbnails,.chapter-stamp,.project-header,.terminal-heading,.trace-axis,.tool-flow,.inventory-mini,.tech-line,.item-code,.location-tag')||[];
+    protectedNodes.forEach(node=>{const r=node.getBoundingClientRect();if(r.width&&r.height)ctx.clearRect(Math.floor(r.left-base.left)-4,Math.floor(r.top-base.top)-4,Math.ceil(r.width)+8,Math.ceil(r.height)+8);});
+  }
   const colors = ['#fff4d7','#e8af66','#bfd398','#75afb5'];
   function resizeCanvas() {
     const rect = viewport.getBoundingClientRect();
@@ -148,6 +175,7 @@
     particles = Array.from({length:count}, (_, i) => ({x:i%3===0 ? Math.random()*width : i%2 ? 3+Math.random()*8 : width-11+Math.random()*8,y:Math.random()*height,phase:Math.random()*Math.PI*2,speed:2+Math.random()*5,size:i%7===0?3:2,kind:i%8===0?'beam':i%6===0?'star':'firefly',color:colors[i%colors.length]}));
     sweeps = [{x:Math.random()*width, v:width/24}, {x:-width*Math.random()*.4, v:width/31}];
     meteors = [];
+    seedInfo();
   }
   function stopCanvas() {
     cancelAnimationFrame(raf); raf = 0; last = 0;
@@ -162,6 +190,8 @@
       last = now; frames++;
       ctx.clearRect(0, 0, width, height);
       const base = viewport.getBoundingClientRect(), scene = scenes[getAdventure().cur];
+      if(getAdventure().cur>0){drawInfoPage(now,dt,base,scene);}else{
+      infoChapter=0;
       ctx.save(); ctx.beginPath();
       // Empty outer margins, plus the landscape floor. No full-screen veil.
       const edge = window.innerWidth <= 740 ? 12 : 22;
@@ -204,10 +234,12 @@
         const box = node.getBoundingClientRect();
         if (box.width && box.height) ctx.clearRect(Math.floor(box.left-base.left)-10,Math.floor(box.top-base.top)-10,Math.ceil(box.width)+20,Math.ceil(box.height)+20);
       });
+      }
     }
     raf = requestAnimationFrame(frame);
   }
   function syncCanvas() {
+    viewport.classList.toggle('effects-information',Boolean(getAdventure()&&getAdventure().cur>0));
     if (!ctx || !available()) { stopCanvas(); return; }
     if (!raf) { viewport.classList.add('effects-live'); raf = requestAnimationFrame(frame); }
   }
@@ -232,7 +264,7 @@
   document.querySelectorAll('.sequence-caption').forEach(node => node.classList.add('effects-caption'));
   window.__adventureEffects = {
     stop: () => { cancelLoops(true); stopCanvas(); },
-    get state() { return {raf:!!raf,particles:particles.length,dpr,frames,loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
+    get state() { return {raf:!!raf,particles:particles.length,dpr,frames,information:{active:(getAdventure()?.cur||0)>0,particles:infoParticles.length,frames:infoFrames,burst:Boolean(infoBurst),version:'info-pixel-1'},loops:loops.map(({key,enabled,phase,visited})=>({key,enabled,phase,visited}))}; }
   };
   resizeCanvas(); reconcile();
 })();

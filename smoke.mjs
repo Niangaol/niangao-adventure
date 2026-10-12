@@ -5,7 +5,7 @@ const html=fs.readFileSync('index.html','utf8'),js=fs.readFileSync('app.js','utf
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size,'HTML IDs must be unique');
 for(const f of ['app.js','world.js'])new vm.Script(fs.readFileSync(f,'utf8'),{filename:f});
 assert.equal([...html.matchAll(/<section class="scene/g)].length,8);
-for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)){const p=match[1];if(/^(https?:|mailto:)/.test(p))continue;assert.ok(fs.existsSync(p),'Missing asset: '+p);}
+for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)){const p=match[1].split(/[?#]/)[0];if(/^(https?:|mailto:)/.test(p))continue;assert.ok(fs.existsSync(p),'Missing asset: '+p);}
 assert.ok(css.includes('prefers-reduced-motion'));assert.ok(js.includes('stopSequence'));assert.ok(js.includes('reverseFrames'));
 for(const [name,src] of [['index.html',html],['app.js',js],['world.js',fs.readFileSync('world.js','utf8')],['styles.css',css]]){assert.ok(!/[CD]:[\\/]|sourceAbsolutePath|photo-manifest[.]json/.test(src),'Private source path leaked in '+name);}
 const photos=fs.readdirSync('assets/photos').filter(n=>n.endsWith('.webp'));assert.equal(photos.length,10);
