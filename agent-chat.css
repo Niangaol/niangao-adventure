@@ -64,6 +64,16 @@
 .agent-section button:disabled { opacity: .55; cursor: not-allowed; }
 #agentStop[hidden], #agentReconnect[hidden], .agent-generating[hidden] { display: none; }
 @media (hover: hover) and (pointer: fine) { #agentSend:not(:disabled):hover { background: var(--jade); color: var(--paper); } }
+@media (prefers-color-scheme: dark){
+  .agent-bubble{box-shadow:3px 3px 0 #0a1418}
+  .agent-message-incomplete .agent-bubble{background:#3a3319}
+  #agentInput{background:#13232a}
+  #agentInput::placeholder{color:#7fa096}
+  #agentInput:read-only{background:#0f1c22}
+  #agentConnection[data-state="error"]{background:#3a2320;color:#f0b3a6;border-color:#b5654f}
+  .agent-status[data-kind="error"]{color:#e8a396}
+  .agent-section button:focus-visible{outline:3px #dd8e7a}
+}
 @media (max-width: 1050px) { .agent-layout { grid-template-columns: minmax(200px, .6fr) minmax(0, 1.4fr); gap: 20px; } .agent-card, .agent-terminal { padding: 18px; } }
 @media (max-width: 740px) {
   .agent-section { margin: 24px 18px 30px; padding-top: 20px; }

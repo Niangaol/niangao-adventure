@@ -23,3 +23,35 @@ dialog{font-family:var(--font);font-size:18px;color:var(--ink);border:4px solid 
 @media(max-width:370px){.brand small{display:none}.brand{font-size:14px}.system-actions button{font-size:11px;padding:5px}.hero-copy h1{font-size:54px}.hero-cta{flex-direction:column;align-items:flex-start}.hero-cta button{font-size:15px}.hero-photo{width:130px}.hero-photo img{height:74px}.section-heading h2{font-size:29px}.chapter-stamp{font-size:10px;padding:4px 6px}.work-menu{grid-template-columns:1fr}.work-menu .side-note{grid-column:1}.hud-chapter b{font-size:11px}.bottom-hud #presenterOpen{font-size:10px}.nav-buttons button{font-size:11px;padding:5px}.lab-monitor{gap:12px}.lab-monitor .pixel-ball{width:56px;height:56px}.lab-monitor h3{font-size:20px}.photo-meta h3{font-size:18px}.boot-word h2{font-size:24px}.photo-thumbnails{grid-template-columns:repeat(5,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+/* Dark mode follows the system. Same GBA language, night palette. */
+html{color-scheme:light dark}
+@media (prefers-reduced-motion: no-preference){body,.scene,.pixel-panel,.topbar,.bottom-nav,.bottom-hud,.project-select,.tech-line span,.chapter-stamp,.agent-terminal{transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}}
+@media (prefers-color-scheme: dark){
+  :root{--ink:#e9f1e0;--ink2:#a9c6b6;--paper:#1f3239;--mint:#15262e;--sky:#2a4552;--lake:#4d8090;--jade:#7cc0a6;--grass:#5f8f68;--sun:#e9b76a;--red:#dd8e7a;--line:#739a93;color-scheme:dark}
+  body{background:#0c181e}
+  .console{box-shadow:inset 0 0 0 3px #0a1418}
+  .console::before{border-color:#081014}
+  #viewport{background:#11202a}
+  .scene{background:#182a33;scrollbar-color:#4f7a72 #11202a}
+  .pixel-panel{box-shadow:6px 6px 0 #0a1418}
+  .pixel-panel::before{border-color:#2e4750}
+  .chapter-stamp{box-shadow:3px 3px #0a1418}
+  button{box-shadow:2px 2px 0 #0a1418}
+  .project-select{background:#1b2f37}
+  .tech-line span{background:#1d3138;border-color:#4f7a72}
+  .hero-photo{box-shadow:7px 7px 0 rgba(4,10,13,.45)}
+  .photo-main{background:#0d1a20}
+  .photo-main .shutter{background:#182a33}
+  #boot{background:#0f1e25}
+  .boot-stage{box-shadow:8px 8px 0 #081014}
+  dialog{box-shadow:8px 8px 0 #0a1418}
+  dialog::backdrop{background:rgba(5,12,16,.84)}
+  #transitionMarker{box-shadow:3px 3px #0a1418}
+  .noscript-message{border-color:#0a1418}
+  .square-dot{box-shadow:2px 2px 0 #10261f}
+  .pixel-screen{background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(10,25,30,.13) 3px 4px)}
+  .favorite-list article,.quest-log article,.next-level{border-color:#3c5a50}
+  .journey-line{border-left-color:#3f6b52}
+  .hud-route i{background:#3d5f5e}
+  .location-tag,.project-select small,.favorite-list p,.quest-log p{color:var(--ink2)}
+}

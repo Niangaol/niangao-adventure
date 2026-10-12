@@ -48,3 +48,8 @@ body.low-motion .cursor-fx{display:none}
 .agent-thinking{font-size:12px;color:var(--line,#6a8780);min-width:4.5em}
 @media(prefers-reduced-motion:reduce){.agent-orbit i{animation:none;transform:translateY(-6px)}}
 body.low-motion .agent-orbit i{animation:none;transform:translateY(-6px)}
+@media (prefers-color-scheme: dark){
+  #viewport.effects-information{background:#182a33}
+  #viewport.effects-information>.scene.moving{background:#182a33}
+  .effects-loop{box-shadow:2px 2px 0 #0a1418}
+}
