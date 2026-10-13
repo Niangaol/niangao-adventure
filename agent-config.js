@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://cartoon-recipes-pdas-drive.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://clicking-cleaner-critics-slide.trycloudflare.com"};
