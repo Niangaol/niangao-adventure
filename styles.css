@@ -28,7 +28,7 @@ body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:n
 @keyframes boot-css-fallback{to{visibility:hidden;pointer-events:none}}
 .image-load-track{padding:12px 0;font-size:14px}.image-load-track[hidden]{display:none}.image-load-track i{display:block;height:6px;margin-top:10px;background:repeating-linear-gradient(90deg,var(--jade) 0 12px,transparent 12px 20px);background-size:40px 100%;animation:image-loading .65s linear infinite}.image-load-track.failed i{display:none}@keyframes image-loading{to{background-position:40px 0}}@media(prefers-reduced-motion:reduce){.image-load-track i{animation:none}}
 /* SafeTrace intel radar: scan, merge, quarantine, enrich, index, answer. */
-.intel-radar{display:grid;grid-template-columns:232px 1fr;gap:22px;align-items:center;padding:18px;border:2px solid var(--ink);background:#edf2e0;box-shadow:inset 0 0 0 1px #c6d4b6}
+.intel-radar{display:grid;grid-template-columns:232px 1fr;gap:22px;align-items:center;padding:18px;border:2px solid #253e43;background:#edf2e0;color:#253e43;box-shadow:inset 0 0 0 1px #c6d4b6}
 .radar-scope{position:relative;width:232px;height:212px;background:#15323b;border:2px solid var(--ink);overflow:hidden;box-shadow:inset 0 0 0 1px #0c222a}
 .radar-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 13px,rgba(140,205,192,.13) 13px 14px),repeating-linear-gradient(90deg,transparent 0 13px,rgba(140,205,192,.13) 13px 14px)}
 .radar-rings{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0 33px,rgba(124,255,214,.2) 33px 34px,transparent 34px 66px,rgba(124,255,214,.2) 66px 67px,transparent 67px 99px,rgba(124,255,214,.2) 99px 100px)}
@@ -58,18 +58,18 @@ body.low-motion *,body.low-motion *::before,body.low-motion *::after{animation:n
 .radar-side{min-width:0}
 .radar-log{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px}
 .radar-log li{opacity:.58;transition:opacity .3s}
-.radar-log li::before{content:"▸ ";color:var(--jade)}
+.radar-log li::before{content:"▸ ";color:#3d6b57}
 .intel-radar[data-stage="0"] .radar-log li:nth-child(-n+1),.intel-radar[data-stage="1"] .radar-log li:nth-child(-n+2),.intel-radar[data-stage="2"] .radar-log li:nth-child(-n+3),.intel-radar[data-stage="3"] .radar-log li:nth-child(-n+4),.intel-radar[data-stage="4"] .radar-log li{opacity:1}
-.radar-answer{margin-top:14px;border:2px dashed var(--jade);padding:10px 12px;background:#fff9e9;opacity:0;transform:translateY(6px);transition:opacity .45s steps(4,end),transform .45s steps(4,end)}
+.radar-answer{margin-top:14px;border:2px dashed #3d6b57;padding:10px 12px;background:#fff9e9;opacity:0;transform:translateY(6px);transition:opacity .45s steps(4,end),transform .45s steps(4,end)}
 .radar-answer p{margin:0}
 .radar-query{font-size:15px}
-.radar-cite{font-size:12px;color:var(--ink2);margin-top:4px}
+.radar-cite{font-size:12px;color:#426060;margin-top:4px}
 .intel-radar[data-stage="4"] .radar-answer{opacity:1;transform:none}
 @media(max-width:900px){.intel-radar{grid-template-columns:1fr;gap:16px}.radar-scope{width:100%;max-width:260px;height:auto;aspect-ratio:1/1;margin:0 auto}}
 @media(prefers-reduced-motion:reduce){.radar-sweep{animation:none}.intel-radar[data-stage="0"] .radar-signal{animation:none;opacity:1;transform:none}}
 body.low-motion .radar-sweep{animation:none}
 body.low-motion .intel-radar[data-stage="0"] .radar-signal{animation:none;opacity:1;transform:none}
-@media(prefers-color-scheme:dark){.intel-radar{background:#1b2f37;box-shadow:inset 0 0 0 1px #2c454d}.radar-answer{background:#243a42}}
+@media(prefers-color-scheme:dark){.intel-radar{background:#e6eed6;box-shadow:inset 0 0 0 1px #b9cdb4}.radar-answer{background:#fff4dc}}
 /* Hand-drawn pixel assets: scene icons, mascot and camp banner. */
 .scene-icon{width:44px;height:44px;object-fit:contain;image-rendering:pixelated;display:block;margin-bottom:10px}
 .hero-mascot{position:absolute;right:28px;bottom:84px;width:112px;height:auto;image-rendering:pixelated;z-index:3;pointer-events:none;animation:mascot-bob 2.6s steps(2,end) infinite}
