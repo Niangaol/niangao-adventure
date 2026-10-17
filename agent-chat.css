@@ -17,10 +17,6 @@
 .agent-card ul { padding-left: 22px; font-size: 16px; }
 .agent-card li { margin: 8px 0; }
 .agent-badge { display: inline-block; padding: 3px 8px; border: 2px solid var(--ink); background: var(--sun, #e8af66); font-size: 13px; }
-.agent-paused { margin: 12px 0 14px; padding: 11px 13px; background: #f7e3c2; border: 2px solid var(--ink); box-shadow: 4px 4px 0 rgba(37, 62, 67, .28); display: grid; gap: 3px; }
-.agent-paused b { font-weight: 700; font-size: 16px; color: #7a4a1e; letter-spacing: .02em; }
-.agent-paused span { font-size: 14px; color: #6b4a2a; }
-@media (prefers-color-scheme: dark) { .agent-paused { background: #4a3a22; border-color: #d9c39a; box-shadow: 4px 4px 0 rgba(0,0,0,.4); } .agent-paused b { color: #f0c98a; } .agent-paused span { color: #d8c4a4; } }
 .agent-terminal { min-width: 0; padding: 20px; }
 .agent-terminal-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 14px; padding: 0 0 14px; border-bottom: 2px dashed var(--jade); font-size: 22px; }
 #agentConnection { font-size: 12px; padding: 4px 8px; background: var(--mint, #dbe9cc); border: 1px solid var(--jade); overflow-wrap: anywhere; }
