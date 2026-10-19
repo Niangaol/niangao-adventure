@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mystery-hong-cooperative-six.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://employee-extreme-dealer-timing.trycloudflare.com"};
