@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://substantial-intended-finally-ending.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://adoption-infrastructure-downloadable-guarantee.trycloudflare.com"};
