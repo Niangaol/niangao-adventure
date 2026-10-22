@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://called-shopping-negotiation-www.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://designers-subscribe-final-metals.trycloudflare.com"};
