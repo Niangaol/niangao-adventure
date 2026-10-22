@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://carmen-morgan-patients-var.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://nato-abu-reputation-tan.trycloudflare.com"};
