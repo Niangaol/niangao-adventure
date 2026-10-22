@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://outreach-corn-truth-apps.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://carrying-ice-album-kirk.trycloudflare.com"};
