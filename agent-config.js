@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://sport-pieces-behavior-classroom.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://carmen-morgan-patients-var.trycloudflare.com"};
