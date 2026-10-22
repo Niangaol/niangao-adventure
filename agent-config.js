@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://surgery-extraordinary-stanford-walked.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://drain-indianapolis-little-namespace.trycloudflare.com"};
