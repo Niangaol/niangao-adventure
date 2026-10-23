@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://fix-rna-spider-yes.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://refinance-bolt-colors-donor.trycloudflare.com"};
