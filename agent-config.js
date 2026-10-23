@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://packed-carpet-sight-enjoy.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://networking-oxide-gives-sbjct.trycloudflare.com"};
