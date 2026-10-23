@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://presents-martin-wall-mem.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://cedar-edge-conflict-dallas.trycloudflare.com"};
