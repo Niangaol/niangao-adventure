@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://president-refinance-licence-files.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://pharmacies-presidential-tumor-infinite.trycloudflare.com"};
