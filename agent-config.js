@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://nancy-yourself-creating-depends.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://replaced-stainless-star-platforms.trycloudflare.com"};
