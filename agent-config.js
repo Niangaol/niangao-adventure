@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://higher-field-cape-colour.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ids-meant-insurance-products.trycloudflare.com"};
