@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://gst-southern-default-speaks.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://circuit-august-personally-allen.trycloudflare.com"};
