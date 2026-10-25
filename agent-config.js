@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://pharmacy-showed-interview-terms.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://rendering-beaver-ride-auction.trycloudflare.com"};
