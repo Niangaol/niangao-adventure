@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://creates-discrete-pontiac-vatican.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://silver-creating-shareholders-workflow.trycloudflare.com"};
