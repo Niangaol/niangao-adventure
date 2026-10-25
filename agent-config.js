@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://nurses-prisoner-flickr-backup.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://finished-northern-pictures-stops.trycloudflare.com"};
