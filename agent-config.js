@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://jets-hidden-consumption-provides.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://exclude-deemed-manually-armed.trycloudflare.com"};
