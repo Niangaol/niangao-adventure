@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://inform-clark-neil-vat.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://muscles-virtual-chat-typically.trycloudflare.com"};
