@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://gst-italic-reply-ratings.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://interested-notified-rachel-fur.trycloudflare.com"};
