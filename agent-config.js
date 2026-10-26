@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://arts-ranked-percent-championship.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://conducting-saturday-array-nextel.trycloudflare.com"};
