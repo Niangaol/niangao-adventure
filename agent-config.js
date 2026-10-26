@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://stress-cocktail-advisors-subscription.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://collaborative-removable-trainer-poems.trycloudflare.com"};
