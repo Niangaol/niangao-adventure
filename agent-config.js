@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://wallet-interstate-object-criterion.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://engagement-dark-maryland-laptop.trycloudflare.com"};
