@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://eyes-parade-app-displaying.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://yellow-tests-each-assessed.trycloudflare.com"};
