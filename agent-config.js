@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://input-take-liberal-consolidated.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://johnston-increasingly-lawrence-browsers.trycloudflare.com"};
