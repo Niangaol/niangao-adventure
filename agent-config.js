@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://identify-storage-thanksgiving-overcome.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ron-knitting-motherboard-put.trycloudflare.com"};
