@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://pharmaceuticals-reef-architects-enters.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://drinks-alignment-results-municipal.trycloudflare.com"};
