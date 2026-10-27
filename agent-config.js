@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://laws-pending-fri-graphical.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://accordance-gained-isp-loud.trycloudflare.com"};
