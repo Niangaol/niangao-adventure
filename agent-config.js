@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://poster-respective-process-sleeve.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://banner-coast-initially-lifestyle.trycloudflare.com"};
