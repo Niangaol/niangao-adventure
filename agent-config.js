@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://independent-percentage-avi-references.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://manual-pointing-simulations-copied.trycloudflare.com"};
