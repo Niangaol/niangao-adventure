@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bills-lat-mai-skating.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://expect-safer-specify-comp.trycloudflare.com"};
