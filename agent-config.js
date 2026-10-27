@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://solution-pub-holdem-muscles.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://thereafter-fig-antenna-excerpt.trycloudflare.com"};
