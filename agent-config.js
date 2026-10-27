@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://dare-turner-bundle-equally.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://newsletters-lives-tyler-polyester.trycloudflare.com"};
