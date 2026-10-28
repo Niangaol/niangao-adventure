@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://rhythm-campaign-lady-cashiers.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mud-basics-widespread-enb.trycloudflare.com"};
