@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://jesus-vitamin-camping-region.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://compatibility-broker-lawn-cumulative.trycloudflare.com"};
