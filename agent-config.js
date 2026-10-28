@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://thousand-skip-experienced-membership.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://idea-against-flickr-hygiene.trycloudflare.com"};
