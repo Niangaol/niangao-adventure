@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mud-basics-widespread-enb.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bidding-thoroughly-chapters-finished.trycloudflare.com"};
