@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://recommends-cargo-lodging-united.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://positioning-situation-identity-constraints.trycloudflare.com"};
