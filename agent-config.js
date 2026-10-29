@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ericsson-trees-resolved-voluntary.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://solve-donations-definition-impressed.trycloudflare.com"};
