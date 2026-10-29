@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://elite-tourism-trainer-series.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://basics-quick-beef-giants.trycloudflare.com"};
