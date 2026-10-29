@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://minneapolis-pay-customize-independently.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://locally-accomplished-crm-jeans.trycloudflare.com"};
