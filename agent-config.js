@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://dash-guns-handheld-whereas.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://loop-flyer-pregnant-sam.trycloudflare.com"};
