@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://prisoner-things-families-faced.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://photographer-graph-month-metropolitan.trycloudflare.com"};
