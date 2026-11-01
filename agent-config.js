@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://speaking-cement-collection-eggs.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://symantec-characterized-truly-nutten.trycloudflare.com"};
