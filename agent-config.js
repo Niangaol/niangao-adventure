@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://gardens-ash-enjoying-musicians.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://minority-mpegs-peaceful-dispatch.trycloudflare.com"};
