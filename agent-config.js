@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://coordinate-awesome-burton-usa.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://prints-issn-amendment-princess.trycloudflare.com"};
