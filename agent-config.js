@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ips-laid-gave-molecular.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://restrict-location-pixel-ocean.trycloudflare.com"};
