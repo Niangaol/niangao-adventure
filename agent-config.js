@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://norm-wallet-contain-test.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://yields-simply-kruger-impacts.trycloudflare.com"};
