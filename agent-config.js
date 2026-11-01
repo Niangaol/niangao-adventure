@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://partner-removable-changing-altered.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://listening-strange-andale-prague.trycloudflare.com"};
