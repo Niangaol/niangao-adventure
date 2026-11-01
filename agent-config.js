@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://organizational-hamilton-chairs-surely.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://alliance-wallet-accurate-crop.trycloudflare.com"};
