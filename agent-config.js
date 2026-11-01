@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://republic-moments-cleaners-enzyme.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://consecutive-cooperation-garden-explicitly.trycloudflare.com"};
