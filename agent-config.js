@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://notifications-colored-okay-contain.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://manhattan-hammer-early-door.trycloudflare.com"};
