@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://wishlist-generation-isbn-more.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://modes-networking-kyle-rejected.trycloudflare.com"};
