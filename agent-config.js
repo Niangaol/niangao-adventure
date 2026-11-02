@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://netscape-atm-complicated-carries.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://roommates-recorders-divx-hygiene.trycloudflare.com"};
