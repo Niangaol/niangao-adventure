@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://operational-indicators-forming-bids.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://referred-korea-guild-fruits.trycloudflare.com"};
