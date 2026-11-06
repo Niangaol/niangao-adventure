@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://approval-mod-constitutional-humans.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://seating-remote-mine-minimize.trycloudflare.com"};
