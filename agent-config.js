@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://scenic-contribute-character-holmes.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://begins-stats-distinction-booth.trycloudflare.com"};
