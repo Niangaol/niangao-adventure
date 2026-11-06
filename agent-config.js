@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://substitute-associations-zum-finally.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mysterious-chapters-classical-indicates.trycloudflare.com"};
