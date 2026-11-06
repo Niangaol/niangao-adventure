@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://pee-declare-closely-instructors.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tricks-devel-explicitly-academy.trycloudflare.com"};
