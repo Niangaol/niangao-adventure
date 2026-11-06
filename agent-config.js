@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://disciplines-kent-issues-sing.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://posting-revised-applicant-hewlett.trycloudflare.com"};
