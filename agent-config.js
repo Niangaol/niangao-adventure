@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mazda-controlled-gazette-basket.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://approve-licensed-processor-settlement.trycloudflare.com"};
