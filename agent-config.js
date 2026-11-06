@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://resource-harder-pricing-composition.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://suit-zip-marketing-movement.trycloudflare.com"};
