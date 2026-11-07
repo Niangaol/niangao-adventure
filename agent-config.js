@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://steps-chest-palace-experimental.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://creature-elvis-authorization-draw.trycloudflare.com"};
