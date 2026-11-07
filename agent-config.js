@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://dental-divx-against-advertiser.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://asthma-processing-translated-political.trycloudflare.com"};
