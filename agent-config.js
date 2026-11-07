@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://childrens-fusion-tags-martha.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://certified-forums-favorite-funeral.trycloudflare.com"};
