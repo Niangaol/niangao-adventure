@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://guest-viewing-contacts-tricks.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://reducing-psychological-millennium-recommended.trycloudflare.com"};
