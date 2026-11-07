@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bringing-reader-platforms-rational.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bargain-starting-rehabilitation-cartridges.trycloudflare.com"};
