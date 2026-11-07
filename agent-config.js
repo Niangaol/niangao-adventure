@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://faster-albany-alias-announcements.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://complimentary-towers-church-decor.trycloudflare.com"};
