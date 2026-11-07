@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://systematic-suggest-commit-affect.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://retailer-references-province-kingdom.trycloudflare.com"};
