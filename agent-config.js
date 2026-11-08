@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://gnu-cycle-laser-functions.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://partially-cet-constitutes-delivers.trycloudflare.com"};
