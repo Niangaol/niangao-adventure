@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://budget-asylum-signatures-sculpture.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bookmark-way-collector-prayer.trycloudflare.com"};
