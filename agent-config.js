@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://forget-sellers-spectacular-yea.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://continually-aspects-disposal-painting.trycloudflare.com"};
