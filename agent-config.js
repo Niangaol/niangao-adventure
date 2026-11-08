@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://captain-boulevard-christmas-statewide.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://speaking-filters-cbs-marine.trycloudflare.com"};
