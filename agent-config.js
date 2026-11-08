@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mail-pointing-rounds-guidelines.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://medications-capabilities-nutten-sake.trycloudflare.com"};
