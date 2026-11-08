@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://cup-containers-cosmetic-spelling.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://holdem-nicole-making-notification.trycloudflare.com"};
