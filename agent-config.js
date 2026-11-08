@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://pair-pot-seem-heavily.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://student-peak-plugin-displays.trycloudflare.com"};
