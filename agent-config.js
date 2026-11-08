@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tracking-consistency-advertise-editions.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bruce-yearly-side-entities.trycloudflare.com"};
