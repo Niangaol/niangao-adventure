@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://traffic-hood-intensive-purposes.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://roulette-mercury-code-dip.trycloudflare.com"};
