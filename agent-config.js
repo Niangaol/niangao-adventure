@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://arab-ending-bald-production.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://sterling-optimization-advertisers-chat.trycloudflare.com"};
