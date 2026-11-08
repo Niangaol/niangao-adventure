@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://implied-genesis-runs-equation.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://adams-wendy-corporations-calm.trycloudflare.com"};
