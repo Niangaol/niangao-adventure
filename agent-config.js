@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://intellectual-projector-plug-searching.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://highlight-muscles-brad-year.trycloudflare.com"};
