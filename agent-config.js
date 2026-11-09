@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://owner-dee-soundtrack-abs.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://hitachi-metres-cooler-theories.trycloudflare.com"};
