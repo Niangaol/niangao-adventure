@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://warriors-existed-poems-habitat.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://gzip-organization-involving-nat.trycloudflare.com"};
