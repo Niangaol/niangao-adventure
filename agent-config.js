@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://convinced-loud-yearly-slideshow.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://refused-citizenship-bent-villages.trycloudflare.com"};
