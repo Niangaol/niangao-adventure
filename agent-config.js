@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://eco-quick-positive-notification.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://americans-selective-shares-barrier.trycloudflare.com"};
