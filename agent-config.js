@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://closest-sealed-rules-seek.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://drinking-providence-mold-updating.trycloudflare.com"};
