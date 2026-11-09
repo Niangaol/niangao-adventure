@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tournament-virgin-patrick-arranged.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ricky-metric-ryan-kick.trycloudflare.com"};
