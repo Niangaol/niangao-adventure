@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://composed-adapted-reason-headers.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://biography-spice-fragrances-ali.trycloudflare.com"};
