@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://toolbar-discovery-julian-attitude.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://explain-mainly-possible-logo.trycloudflare.com"};
