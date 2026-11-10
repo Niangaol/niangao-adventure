@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://revelation-bobby-bra-ceo.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://seat-aspects-each-seeker.trycloudflare.com"};
