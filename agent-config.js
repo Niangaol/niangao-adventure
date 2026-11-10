@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://soma-radar-deputy-flow.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://hydrocodone-positions-career-jun.trycloudflare.com"};
