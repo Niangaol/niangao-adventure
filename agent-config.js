@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://bent-architecture-seats-colin.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ssl-elsewhere-mature-gibson.trycloudflare.com"};
