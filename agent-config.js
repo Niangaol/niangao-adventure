@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://infant-lone-significance-friday.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://candidates-adsl-synthetic-certain.trycloudflare.com"};
