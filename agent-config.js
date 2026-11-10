@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://hawk-geographic-presently-supports.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://anthropology-returned-worth-contribute.trycloudflare.com"};
