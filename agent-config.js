@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://instructions-substantial-sections-signature.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://constitutional-bernard-tomatoes-expires.trycloudflare.com"};
