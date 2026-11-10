@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tongue-bus-yields-sort.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://baptist-moderator-fixed-evans.trycloudflare.com"};
