@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://lodging-thee-wool-too.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://choosing-rebate-royalty-semi.trycloudflare.com"};
