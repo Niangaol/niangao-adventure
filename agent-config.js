@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://entitled-wide-sys-hosting.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://showing-nature-jennifer-mills.trycloudflare.com"};
