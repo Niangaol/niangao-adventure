@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tend-introduce-stranger-besides.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://leo-settle-acceptable-hypothetical.trycloudflare.com"};
