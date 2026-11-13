@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://philips-repeated-publications-solid.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://protection-cabinet-weather-accordingly.trycloudflare.com"};
