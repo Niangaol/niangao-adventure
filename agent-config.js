@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://soviet-advise-occurred-informative.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://taylor-owned-switch-plc.trycloudflare.com"};
