@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://oakland-indices-surplus-wisconsin.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://mitsubishi-sign-randy-electrical.trycloudflare.com"};
