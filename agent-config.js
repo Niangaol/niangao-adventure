@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://parameters-audit-director-router.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://nails-testament-monitoring-permitted.trycloudflare.com"};
