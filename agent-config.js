@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://para-offer-educators-nights.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://yang-component-motivation-steady.trycloudflare.com"};
