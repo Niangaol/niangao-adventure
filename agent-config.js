@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://nova-biodiversity-niagara-emphasis.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://glenn-tests-bias-acrylic.trycloudflare.com"};
