@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://colony-mapping-thereafter-rand.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://counted-proceeds-doctor-message.trycloudflare.com"};
