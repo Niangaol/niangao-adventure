@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://grab-establish-resumes-jay.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://cancellation-apparatus-rainbow-discounted.trycloudflare.com"};
