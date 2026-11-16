@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://frequencies-barely-solving-blocking.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://sequences-novel-sherman-pressure.trycloudflare.com"};
