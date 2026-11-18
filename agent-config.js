@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://tree-will-port-two.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://writing-maui-push-struck.trycloudflare.com"};
