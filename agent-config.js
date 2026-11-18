@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://outlets-transcript-older-cold.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://calendar-salvation-finals-batteries.trycloudflare.com"};
