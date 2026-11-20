@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://ended-fifteen-jam-variance.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://fleet-inputs-linear-comm.trycloudflare.com"};
