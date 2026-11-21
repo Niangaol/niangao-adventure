@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://funeral-pension-angel-effectiveness.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://converter-eco-remote-plays.trycloudflare.com"};
