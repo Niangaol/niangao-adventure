@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://apt-wilderness-climbing-stationery.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://hope-horse-decreased-strange.trycloudflare.com"};
