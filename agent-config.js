@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://promotion-wheat-school-allocation.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://momentum-modules-travesti-educated.trycloudflare.com"};
