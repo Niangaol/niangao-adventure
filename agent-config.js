@@ -1,2 +1,2 @@
 /* Public connection address only. Credentials never belong here. */
-window.NIANGAO_AGENT_CONFIG={"apiBase":"https://revolution-drinks-could-mode.trycloudflare.com"};
+window.NIANGAO_AGENT_CONFIG={"apiBase":"https://axis-spray-incentive-clock.trycloudflare.com"};
